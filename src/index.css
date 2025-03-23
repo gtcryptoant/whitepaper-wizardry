@@ -184,8 +184,8 @@
   .tribal-border {
     @apply relative;
     @apply after:absolute after:inset-0 after:p-0.5;
-    @apply after:bg-gradient-to-r after:from-tribal-bright-yellow after:via-tribal-bright-green after:to-tribal-bright-yellow;
-    @apply after:rounded-lg after:mask-border;
+    @apply after:bg-gradient-to-r;
+    @apply after:rounded-lg;
     @apply after:border after:border-tribal-bright-yellow/30;
   }
   

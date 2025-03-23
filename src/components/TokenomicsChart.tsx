@@ -10,12 +10,10 @@ interface TokenomicsDataItem {
   description: string;
 }
 
+// Updated tokenomics data based on the whitepaper
 const tokenomicsData: TokenomicsDataItem[] = [
-  { name: 'Community Rewards', value: 30, color: '#FFD36B', description: 'Allocated for community incentives, yield farming, and governance rewards.' },
-  { name: 'Team & Advisors', value: 15, color: '#9C8A66', description: 'Allocated to the team, advisors, and early contributors with a 2-year vesting schedule.' },
-  { name: 'Treasury', value: 20, color: '#C4B9A3', description: 'Reserved for future development, partnerships, and ecosystem growth.' },
-  { name: 'Liquidity', value: 20, color: '#7D6F52', description: 'Dedicated to ensure market liquidity and trading stability.' },
-  { name: 'Vanilla Farms', value: 15, color: '#EBE7E0', description: 'Direct allocation to vanilla farm acquisition and maintenance.' },
+  { name: 'Initial Supply', value: 40, color: '#FFD36B', description: '100,000 tokens representing the initial amount of plants available for project launch.' },
+  { name: 'Community Rewards', value: 60, color: '#9C8A66', description: '150,000 tokens to be distributed as farm value grows and new plants mature.' },
 ];
 
 interface TooltipProps {
@@ -106,7 +104,8 @@ export const TokenomicsChart = () => {
         </div>
         
         <div className="w-full lg:w-1/2 space-y-4">
-          <h3 className="text-2xl font-display mb-4">Token Distribution</h3>
+          <h3 className="text-2xl font-display mb-4">Vanilla Valley Token (VVT) Distribution</h3>
+          
           <div className="space-y-4">
             {tokenomicsData.map((item, index) => (
               <div 
@@ -128,6 +127,28 @@ export const TokenomicsChart = () => {
                 </div>
               </div>
             ))}
+          </div>
+          
+          <div className="mt-6 p-4 bg-white/20 dark:bg-earth-800/20 backdrop-blur-sm rounded-lg border border-vanilla-200 dark:border-earth-800">
+            <h4 className="font-medium mb-2">Token Details</h4>
+            <ul className="space-y-2 text-earth-700 dark:text-vanilla-200">
+              <li className="flex justify-between">
+                <span>Max Supply:</span>
+                <span className="font-medium">250,000 VVT</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Initial Supply:</span>
+                <span className="font-medium">100,000 VVT</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Initial Token Price:</span>
+                <span className="font-medium">$30 USD</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Blockchain:</span>
+                <span className="font-medium">Cardano</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

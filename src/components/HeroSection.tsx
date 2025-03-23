@@ -44,7 +44,7 @@ export const HeroSection = () => {
               )}
             >
               <div className="inline-block mb-4">
-                <span className="pill">The Future of Agriculture &amp; Finance</span>
+                <span className="pill">Blockchain-Powered Sustainable Vanilla Farming</span>
               </div>
             </div>
             
@@ -54,8 +54,8 @@ export const HeroSection = () => {
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               )}
             >
-              <span className="text-earth-900 dark:text-vanilla-100">Tokenizing Real Vanilla.</span>{' '}
-              <span className="text-vanilla-600 dark:text-vanilla-500">Growing Real Value.</span>
+              <span className="text-earth-900 dark:text-vanilla-100">Real Vanilla Farming.</span>{' '}
+              <span className="text-vanilla-600 dark:text-vanilla-500">Real Yields.</span>
             </h1>
             
             <p 
@@ -64,7 +64,7 @@ export const HeroSection = () => {
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               )}
             >
-              Vanilla Valley brings together the agricultural heritage of vanilla farming with cutting-edge blockchain technology to create transparent, sustainable, and profitable ownership of real-world vanilla assets.
+              Vanilla Valley bridges traditional vanilla farming with blockchain technology, empowering farmers in the Dominican Republic while offering investors sustainable returns from real-world agricultural assets.
             </p>
             
             <div 
@@ -77,14 +77,14 @@ export const HeroSection = () => {
                 onClick={() => scrollToSection('vision')}
                 className="text-lg px-8 py-6 bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950"
               >
-                Explore Vision <ChevronRight className="ml-2 h-5 w-5" />
+                Explore Project <ChevronRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
                 onClick={() => scrollToSection('tokenomics')}
                 variant="outline" 
                 className="text-lg px-8 py-6 border-earth-700 text-earth-700 hover:bg-earth-50 dark:border-vanilla-300 dark:text-vanilla-300 dark:hover:bg-earth-800"
               >
-                View Tokenomics
+                View Investment Returns
               </Button>
             </div>
           </div>
@@ -101,8 +101,8 @@ export const HeroSection = () => {
                 <div className="aspect-video bg-vanilla-100 dark:bg-earth-800/50 rounded-3xl overflow-hidden">
                   <div className="p-8 h-full flex flex-col justify-center items-center">
                     <div className="text-center mb-6">
-                      <h3 className="text-2xl font-display mb-2">Vanilla Valley NFTs</h3>
-                      <p className="text-earth-700 dark:text-vanilla-200">Real farms, real yields, real impact</p>
+                      <h3 className="text-2xl font-display mb-2">Vanilla Valley Token (VVT)</h3>
+                      <p className="text-earth-700 dark:text-vanilla-200">Real assets, sustainable yields, transparent growth</p>
                     </div>
                     <div className="grid grid-cols-2 gap-4 w-full max-w-md">
                       <div className="bg-white/60 dark:bg-earth-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
@@ -110,16 +110,16 @@ export const HeroSection = () => {
                         <div className="text-sm text-earth-700 dark:text-vanilla-300">Annual Yield</div>
                       </div>
                       <div className="bg-white/60 dark:bg-earth-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
-                        <div className="text-4xl font-display text-vanilla-700 dark:text-vanilla-500 mb-1">3,200</div>
-                        <div className="text-sm text-earth-700 dark:text-vanilla-300">Farms Tokenized</div>
+                        <div className="text-4xl font-display text-vanilla-700 dark:text-vanilla-500 mb-1">250K</div>
+                        <div className="text-sm text-earth-700 dark:text-vanilla-300">Max Token Supply</div>
                       </div>
                       <div className="bg-white/60 dark:bg-earth-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
-                        <div className="text-4xl font-display text-vanilla-700 dark:text-vanilla-500 mb-1">$14M</div>
-                        <div className="text-sm text-earth-700 dark:text-vanilla-300">Total Value</div>
+                        <div className="text-4xl font-display text-vanilla-700 dark:text-vanilla-500 mb-1">$30</div>
+                        <div className="text-sm text-earth-700 dark:text-vanilla-300">Initial Token Price</div>
                       </div>
                       <div className="bg-white/60 dark:bg-earth-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
-                        <div className="text-4xl font-display text-vanilla-700 dark:text-vanilla-500 mb-1">7,500+</div>
-                        <div className="text-sm text-earth-700 dark:text-vanilla-300">Community</div>
+                        <div className="text-4xl font-display text-vanilla-700 dark:text-vanilla-500 mb-1">4 Yrs</div>
+                        <div className="text-sm text-earth-700 dark:text-vanilla-300">First Harvest</div>
                       </div>
                     </div>
                   </div>

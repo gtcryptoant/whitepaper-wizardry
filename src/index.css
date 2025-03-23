@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -36,6 +35,14 @@
     --ring: 30 70% 60%;
 
     --radius: 0.5rem;
+    
+    /* Tribal Theme Colors */
+    --tribal-green: #4CAF50;
+    --tribal-bright-green: #76FF03;
+    --tribal-yellow: #FFD36B;
+    --tribal-bright-yellow: #FFFF00;
+    --tribal-terracotta: #E57373;
+    --tribal-color: #FFD36B;
   }
 
   .dark {
@@ -66,6 +73,9 @@
     --border: 30 10% 25%;
     --input: 30 10% 25%;
     --ring: 40 70% 45%;
+    
+    /* Tribal Theme Colors - Dark Mode */
+    --tribal-color: #FFFF00;
   }
 }
 
@@ -169,9 +179,29 @@
   .section-subtitle {
     @apply text-lg text-earth-700 max-w-3xl mx-auto mb-16 text-balance;
   }
+  
+  .tribal-border {
+    @apply relative;
+    @apply after:absolute after:inset-0 after:p-0.5;
+    @apply after:bg-gradient-to-r after:from-tribal-bright-yellow after:via-tribal-bright-green after:to-tribal-bright-yellow;
+    @apply after:rounded-lg after:mask-border;
+    @apply after:border after:border-tribal-bright-yellow/30;
+  }
+  
+  .tribal-glow {
+    @apply relative;
+    box-shadow: 0 0 15px 5px var(--tribal-color);
+  }
+  
+  .tribal-button {
+    @apply bg-gradient-to-r from-tribal-yellow via-tribal-bright-yellow to-tribal-yellow;
+    @apply text-earth-900 font-medium;
+    @apply border border-tribal-yellow/50;
+    @apply shadow-md shadow-tribal-yellow/20;
+    @apply hover:shadow-lg hover:shadow-tribal-yellow/30 transition-shadow;
+  }
 }
 
-/* Advanced animations */
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;
@@ -204,24 +234,29 @@
   pointer-events: none;
 }
 
-.text-balance {
-  text-wrap: balance;
+.mask-border {
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  mask-composite: destination-out;
+  pointer-events: none;
 }
 
-.perspective-container {
-  perspective: 1000px;
+.tribal-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M30 30c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm0 20c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z' stroke='%23FFD36B' stroke-width='1' opacity='.2'/%3E%3Cpath d='M10 10c5.523 0 10-4.477 10-10H0c0 5.523 4.477 10 10 10zm0 20c5.523 0 10-4.477 10-10s-4.477-10-10-10S0 14.477 0 20s4.477 10 10 10zm0 20c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm40 0c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm0-20c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z' stroke='%23FFD36B' stroke-width='1' opacity='.1'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-.tilt-card {
-  transform-style: preserve-3d;
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px 0px var(--tribal-color);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px var(--tribal-color);
+  }
 }
 
-.tilt-card:hover {
-  transform: rotateX(2deg) rotateY(2deg);
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
-/* Horizontal scroll for mobile*/
 .horizontal-scroll {
   @apply flex overflow-x-auto py-4 gap-6 snap-x snap-mandatory;
   -webkit-overflow-scrolling: touch;

@@ -66,7 +66,7 @@ const ConnectWallet = ({ onConnect }: ConnectWalletProps) => {
       {!isConnected ? (
         <Button
           onClick={connectWallet}
-          className="bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950 px-4 py-2"
+          className="tribal-button"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -76,13 +76,13 @@ const ConnectWallet = ({ onConnect }: ConnectWalletProps) => {
           ) : (
             <>
               <Wallet className="mr-2 h-4 w-4" />
-              Connect Wallet
+              Connect Cardano Wallet
             </>
           )}
         </Button>
       ) : (
         <div className="flex items-center">
-          <div className="mr-3 text-sm bg-white/20 dark:bg-earth-800/30 backdrop-blur-sm rounded-full px-3 py-1">
+          <div className="mr-3 text-sm bg-white/20 dark:bg-earth-800/30 backdrop-blur-sm rounded-full px-3 py-1 pulse-glow">
             <span className="text-earth-700 dark:text-vanilla-300">{formatAddress(address!)}</span>
           </div>
           <Button 

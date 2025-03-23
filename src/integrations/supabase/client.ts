@@ -17,6 +17,18 @@ export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABL
   },
 });
 
+// Add type declaration for window.cardano
+declare global {
+  interface Window {
+    cardano?: {
+      nami?: {
+        enable: () => Promise<any>;
+      };
+      // Add other wallet properties as needed
+    };
+  }
+}
+
 // This is a placeholder for future Cardano integration
 export const getCardanoWallet = async () => {
   // Check if Nami wallet extension is available (or other Cardano wallets)

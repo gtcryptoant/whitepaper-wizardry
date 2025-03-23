@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -10,7 +9,6 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, BarChart3, Globe, Leaf, TrendingUp, Wallet } from 'lucide-react';
 
 const Index = () => {
-  // Observer for reveal animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -239,33 +237,35 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 reveal-on-scroll">
             {[
               {
-                name: "Marcus Chen",
-                role: "Founder & CEO",
-                bio: "Former agricultural investment analyst with 12 years of experience in vanilla production and supply chain management across Madagascar and Indonesia.",
+                name: "Andreas Harb",
+                role: "Co-Founder / Sales",
+                bio: "A visionary entrepreneur and Chief Engineer, Andreas has been building businesses since the age of 18. With a deep passion for exploration, he has traveled to 117 countries, gathering insights from diverse cultures and industries.",
                 imageSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D",
                 twitter: "#",
-                linkedin: "#"
+                linkedin: "#",
+                website: "#"
               },
               {
-                name: "Sophia Laurent",
-                role: "CTO",
-                bio: "Blockchain architect with previous experience at Ethereum Foundation. Led development of multiple successful DeFi protocols with focus on real-world asset integration.",
+                name: "Sascha Stockem",
+                role: "Commercial Executive",
+                bio: "With over 15 years of experience in retail, wholesale, and e-commerce, Sascha has led market expansions across Europe, bridging the gap between physical and digital commerce.",
                 imageSrc: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D",
                 twitter: "#",
                 linkedin: "#"
               },
               {
-                name: "Rahim Nkosi",
-                role: "Head of Farm Relations",
-                bio: "Third-generation vanilla farmer and agricultural scientist specializing in sustainable farming practices and yield optimization in tropical environments.",
+                name: "Martin Zinn",
+                role: "Co-Founder / Corporate Development",
+                bio: "Based in Zurich, Martin is the architect behind the group's NFT strategy and financial framework. With a keen eye for legal and corporate structuring, he ensures that blockchain technology is seamlessly integrated into the business model.",
                 imageSrc: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D",
                 twitter: "#",
-                linkedin: "#"
+                linkedin: "#",
+                website: "#"
               },
               {
-                name: "Amelia Reyes",
-                role: "CFO",
-                bio: "Former investment banker specializing in agricultural commodities and derivatives. Led financial strategy for multiple successful commodity tokenization projects.",
+                name: "Anthony Roberts",
+                role: "Blockchain Project Manager",
+                bio: "A blockchain investor and educator since 2020, Anthony—better known as Ant—is passionate about leveraging NFTs to empower artists and build socially conscious businesses.",
                 imageSrc: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D",
                 twitter: "#",
                 linkedin: "#"

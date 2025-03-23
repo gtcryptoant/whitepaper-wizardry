@@ -1,5 +1,6 @@
 
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 export default {
 	darkMode: ["class"],
@@ -189,5 +190,16 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		plugin(function({ addUtilities }) {
+			addUtilities({
+				'.mask-border': {
+					'mask-image': 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+					'mask-composite': 'destination-out',
+					'pointer-events': 'none'
+				}
+			})
+		})
+	],
 } satisfies Config;

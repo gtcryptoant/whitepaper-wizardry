@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -234,11 +235,7 @@
   pointer-events: none;
 }
 
-.mask-border {
-  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-  mask-composite: destination-out;
-  pointer-events: none;
-}
+/* Removed the standalone .mask-border class as it's now in the Tailwind config */
 
 .tribal-pattern {
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M30 30c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm0 20c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z' stroke='%23FFD36B' stroke-width='1' opacity='.2'/%3E%3Cpath d='M10 10c5.523 0 10-4.477 10-10H0c0 5.523 4.477 10 10 10zm0 20c5.523 0 10-4.477 10-10s-4.477-10-10-10S0 14.477 0 20s4.477 10 10 10zm0 20c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm40 0c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm0-20c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z' stroke='%23FFD36B' stroke-width='1' opacity='.1'/%3E%3C/g%3E%3C/svg%3E");

@@ -84,6 +84,12 @@ export default {
 				  800: '#FF8F00',
 				  900: '#FF6F00',
 				},
+				// Add the tribal colors properly to Tailwind config
+				'tribal-green': '#4CAF50',
+				'tribal-bright-green': '#76FF03',
+				'tribal-yellow': '#FFD36B',
+				'tribal-bright-yellow': '#FFFF00',
+				'tribal-terracotta': '#E57373',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

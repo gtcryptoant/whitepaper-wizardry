@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { FolderSprout, Leaf, Clock, CircleDollarSign } from 'lucide-react';
+import { FolderRoot, Leaf, Clock, CircleDollarSign } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
@@ -45,7 +45,7 @@ const TokenHolding = ({
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-earth-600 dark:text-vanilla-400 flex items-center">
-              <FolderSprout className="h-4 w-4 mr-1" /> Plant Value
+              <FolderRoot className="h-4 w-4 mr-1" /> Plant Value
             </span>
             <span className="font-medium">${plantValue.toFixed(2)}</span>
           </div>

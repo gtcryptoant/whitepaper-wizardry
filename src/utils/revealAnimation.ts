@@ -19,7 +19,7 @@ export const initRevealAnimations = (threshold = 0.15, selector = '.reveal-on-sc
   };
 };
 
-export const initProgressiveReveal = (elements, delayBetween = 100) => {
+export const initProgressiveReveal = (elements: Element[], delayBetween = 100) => {
   elements.forEach((el, index) => {
     setTimeout(() => {
       el.classList.add('revealed');
@@ -35,9 +35,14 @@ export const initParallaxEffects = () => {
     const scrollPosition = window.scrollY;
     
     parallaxElements.forEach((element) => {
-      const speed = element.getAttribute('data-speed') || 0.5;
-      const yPos = -(scrollPosition * speed);
-      element.style.transform = `translateY(${yPos}px)`;
+      const speed = element.getAttribute('data-speed') || '0.5';
+      // Convert string to number for calculations
+      const speedValue = parseFloat(speed);
+      const yPos = -(scrollPosition * speedValue);
+      // Add type assertion for HTMLElement to access style property
+      if (element instanceof HTMLElement) {
+        element.style.transform = `translateY(${yPos}px)`;
+      }
     });
   };
   

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { CircleCheck, CircleClock, CircleDollarSign, Leaf, Sprout } from 'lucide-react';
+import { CircleCheck, Clock, CircleDollarSign, Leaf, Sprout } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface TokenDetailsProps {
@@ -93,7 +93,7 @@ const TokenDetails = ({ tokenCount = 0, tokenPrice = 30, connected = false }: To
         <Card className="bg-white/40 dark:bg-earth-900/40 backdrop-blur-sm border-vanilla-200 dark:border-earth-800">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm text-earth-700 dark:text-vanilla-300 flex items-center">
-              <CircleClock className="h-4 w-4 mr-2" />
+              <Clock className="h-4 w-4 mr-2" />
               Next Harvest
             </CardTitle>
           </CardHeader>

@@ -1,152 +1,129 @@
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { cn } from '@/lib/utils';
-import { Menu, X, ChevronRight, LineChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import ConnectWallet from './ConnectWallet';
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-
+  
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
-
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const scrollToSection = (id: string) => {
-    setMobileMenuOpen(false);
-    
-    if (location.pathname !== '/') {
-      // If not on homepage, navigate to homepage first
-      window.location.href = `/#${id}`;
-      return;
-    }
-    
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // Navbar height + additional padding
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+  
+  const toggleMenu = () => setIsOpen(!isOpen);
+  
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
   
-  const isHomePage = location.pathname === '/';
-  const isDashboardPage = location.pathname === '/dashboard';
-
+  const navbarClass = `fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 ${
+    isScrolled ? 'bg-earth-900/95 backdrop-blur-md shadow-md' : 'bg-transparent'
+  }`;
+  
   return (
-    <header 
-      className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled ? "py-3 bg-white/80 dark:bg-earth-900/80 backdrop-blur-md shadow-sm" : "py-5"
-      )}
-    >
-      <nav className="container-padding flex items-center justify-between">
-        <div className="flex items-center">
-          <Link to="/" className="text-2xl font-display font-semibold text-earth-900 dark:text-vanilla-100">
-            Vanilla Valley
+    <nav className={navbarClass}>
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="flex items-center justify-between">
+          <Link to="/" className="flex items-center space-x-2">
+            <span className="text-xl font-display font-bold text-vanilla-200">
+              Vanilla<span className="text-vanilla-500">Valley</span>
+            </span>
           </Link>
-        </div>
-
-        {/* Desktop navigation */}
-        <div className="hidden md:flex items-center space-x-1">
-          {isHomePage && (
-            <>
-              <button onClick={() => scrollToSection('vision')} className="nav-link">Vision</button>
-              <button onClick={() => scrollToSection('tokenomics')} className="nav-link">Tokenomics</button>
-              <button onClick={() => scrollToSection('roadmap')} className="nav-link">Roadmap</button>
-              <button onClick={() => scrollToSection('team')} className="nav-link">Team</button>
-            </>
-          )}
           
-          {!isDashboardPage && (
-            <Link to="/dashboard">
-              <Button className="ml-4 bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950">
-                <LineChart className="mr-1 h-4 w-4" /> Dashboard
-              </Button>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-1">
+            <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
+              Home
             </Link>
-          )}
-          
-          {isDashboardPage && (
-            <Link to="/">
-              <Button 
-                variant="outline"
-                className="ml-4 border-vanilla-500 text-vanilla-600 hover:bg-vanilla-50 dark:border-vanilla-600 dark:text-vanilla-500 dark:hover:bg-earth-800"
-              >
-                Back to Homepage
-              </Button>
-            </Link>
-          )}
-          
-          {isHomePage && (
-            <Button 
-              onClick={() => scrollToSection('join')} 
-              className="ml-4 bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950"
-            >
-              Join Now <ChevronRight className="ml-1 h-4 w-4" />
-            </Button>
-          )}
-        </div>
-
-        {/* Mobile menu button */}
-        <button 
-          className="md:hidden p-2 rounded-md text-earth-700 hover:text-earth-900 hover:bg-vanilla-100 transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      <div className={cn(
-        "fixed inset-0 z-40 bg-white/95 dark:bg-earth-900/95 transform transition-transform duration-300 ease-in-out md:hidden",
-        mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-      )}>
-        <div className="flex flex-col h-full pt-24 px-8 space-y-8">
-          {isHomePage && (
-            <>
-              <button onClick={() => scrollToSection('vision')} className="text-xl py-2 border-b border-vanilla-200 dark:border-earth-800">Vision</button>
-              <button onClick={() => scrollToSection('tokenomics')} className="text-xl py-2 border-b border-vanilla-200 dark:border-earth-800">Tokenomics</button>
-              <button onClick={() => scrollToSection('roadmap')} className="text-xl py-2 border-b border-vanilla-200 dark:border-earth-800">Roadmap</button>
-              <button onClick={() => scrollToSection('team')} className="text-xl py-2 border-b border-vanilla-200 dark:border-earth-800">Team</button>
-            </>
-          )}
-          
-          {!isDashboardPage && (
-            <Link to="/dashboard" className="text-xl py-2 border-b border-vanilla-200 dark:border-earth-800">
+            <Link to="/dashboard" className={`nav-link ${isActive('/dashboard') ? 'active' : ''}`}>
               Dashboard
             </Link>
-          )}
+            <div className="relative group">
+              <button className="nav-link flex items-center">
+                Admin
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </button>
+              <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-earth-800 ring-1 ring-earth-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-1">
+                  <Link to="/admin" className="block px-4 py-2 text-sm text-vanilla-300 hover:text-vanilla-100 hover:bg-earth-700">
+                    Farm Management
+                  </Link>
+                  <Link to="/project-admin" className="block px-4 py-2 text-sm text-vanilla-300 hover:text-vanilla-100 hover:bg-earth-700">
+                    Project Administration
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
           
-          {isDashboardPage && (
-            <Link to="/" className="text-xl py-2 border-b border-vanilla-200 dark:border-earth-800">
-              Back to Homepage
-            </Link>
-          )}
+          <div className="hidden md:flex items-center space-x-4">
+            <ConnectWallet />
+          </div>
           
-          {isHomePage && (
-            <Button 
-              onClick={() => scrollToSection('join')} 
-              className="mt-8 bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950 w-full"
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={toggleMenu}
+              className="p-2 rounded-md text-vanilla-300 hover:text-vanilla-100 focus:outline-none"
             >
-              Join Now <ChevronRight className="ml-1 h-4 w-4" />
-            </Button>
-          )}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
+        </div>
+        
+        {/* Mobile Menu */}
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-screen opacity-100 py-4' : 'max-h-0 opacity-0 overflow-hidden'
+        }`}>
+          <div className="flex flex-col space-y-4">
+            <Link 
+              to="/" 
+              className={`text-vanilla-300 hover:text-vanilla-100 px-2 py-1 ${isActive('/') ? 'text-vanilla-100 font-medium' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/dashboard" 
+              className={`text-vanilla-300 hover:text-vanilla-100 px-2 py-1 ${isActive('/dashboard') ? 'text-vanilla-100 font-medium' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Dashboard
+            </Link>
+            <Link 
+              to="/admin" 
+              className={`text-vanilla-300 hover:text-vanilla-100 px-2 py-1 ${isActive('/admin') ? 'text-vanilla-100 font-medium' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Farm Management
+            </Link>
+            <Link 
+              to="/project-admin" 
+              className={`text-vanilla-300 hover:text-vanilla-100 px-2 py-1 ${isActive('/project-admin') ? 'text-vanilla-100 font-medium' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Project Administration
+            </Link>
+            <div className="pt-4">
+              <ConnectWallet />
+            </div>
+          </div>
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 

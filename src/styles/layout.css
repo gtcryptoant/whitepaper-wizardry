@@ -1,0 +1,14 @@
+
+.horizontal-scroll {
+  @apply flex overflow-x-auto py-4 gap-6 snap-x snap-mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-scroll > * {
+  @apply snap-start flex-shrink-0;
+}

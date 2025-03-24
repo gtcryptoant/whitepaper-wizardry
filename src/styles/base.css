@@ -1,0 +1,115 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 10% 12%;
+    --foreground: 40 20% 92%;
+
+    --card: 30 10% 15%;
+    --card-foreground: 40 20% 92%;
+
+    --popover: 30 10% 15%;
+    --popover-foreground: 40 20% 92%;
+
+    --primary: 40 100% 65%;
+    --primary-foreground: 30 20% 15%;
+
+    --secondary: 30 20% 35%;
+    --secondary-foreground: 40 20% 92%;
+
+    --muted: 30 10% 20%;
+    --muted-foreground: 30 10% 60%;
+
+    --accent: 40 10% 25%;
+    --accent-foreground: 40 20% 92%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 90%;
+
+    --border: 30 10% 25%;
+    --input: 30 10% 25%;
+    --ring: 40 70% 45%;
+    
+    /* Tribal Theme Colors - Dark Mode */
+    --tribal-green: #2c7a2e;
+    --tribal-bright-green: #4caf50;
+    --tribal-yellow: #ffa000;
+    --tribal-bright-yellow: #ffd600;
+    --tribal-terracotta: #bf360c;
+    --tribal-color: #ffd600;
+  }
+
+  .light {
+    --background: 45 33% 98%;
+    --foreground: 30 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 10% 15%;
+
+    --primary: 40 100% 71%;
+    --primary-foreground: 30 20% 15%;
+
+    --secondary: 30 20% 40%;
+    --secondary-foreground: 45 33% 98%;
+
+    --muted: 40 20% 92%;
+    --muted-foreground: 30 10% 40%;
+
+    --accent: 40 50% 88%;
+    --accent-foreground: 30 20% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 30 70% 60%;
+    
+    /* Tribal Theme Colors */
+    --tribal-green: #4CAF50;
+    --tribal-bright-green: #76FF03;
+    --tribal-yellow: #FFD36B;
+    --tribal-bright-yellow: #FFFF00;
+    --tribal-terracotta: #E57373;
+    --tribal-color: #FFD36B;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-medium tracking-tight;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}

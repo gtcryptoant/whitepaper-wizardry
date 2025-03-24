@@ -239,7 +239,10 @@ const Admin = () => {
                       </div>
                     </CardHeader>
                     <CardContent className="pt-6">
-                      <AddFarmForm onSubmit={handleAddFarm} />
+                      <AddFarmForm 
+                        onSubmit={handleAddFarm} 
+                        onCancel={() => setIsAddingFarm(false)}
+                      />
                     </CardContent>
                   </Card>
                 ) : currentFarm ? (
@@ -287,3 +290,4 @@ const Admin = () => {
 };
 
 export default Admin;
+

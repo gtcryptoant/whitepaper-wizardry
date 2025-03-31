@@ -25,6 +25,10 @@ const ParameterTableRow: React.FC<ParameterTableRowProps> = ({
         return 'bg-nature-500 text-white';
       case 'technical':
         return 'bg-taino-500 text-earth-900';
+      case 'agricultural':
+        return 'bg-vanilla-600 text-white';
+      case 'governance':
+        return 'bg-vanilla-800 text-white';
       default:
         return 'bg-vanilla-300 text-earth-900';
     }

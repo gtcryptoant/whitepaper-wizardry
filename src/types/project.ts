@@ -1,18 +1,30 @@
 
+export interface ProjectStats {
+  totalUsers: number;
+  activeUsers: number;
+  totalTokens: number; // Added this field
+  tokenCirculation: number;
+  averageYield: number;
+  harvestFrequency: string;
+}
+
+export type ParameterCategory = 'financial' | 'operational' | 'technical' | 'agricultural' | 'governance' | 'other';
+
 export interface ProjectParameter {
   id: string;
   name: string;
   description: string;
-  value: string;
-  type?: string;
-  category: 'financial' | 'operational' | 'technical' | 'other';
+  value: string; // Ensure this is a string
+  category: ParameterCategory;
   lastUpdated: string;
 }
 
-export interface ProjectStats {
-  totalFarms: number;
-  totalTokenHolders: number;
-  totalHectares: number;
-  averageYield: number;
-  projectValue: number;
+export interface ProjectPartner {
+  id: string;
+  name: string;
+  logo: string;
+  website: string;
+  description: string;
+  partnershipDate: string;
+  category: string;
 }

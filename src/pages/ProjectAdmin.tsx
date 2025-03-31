@@ -1,182 +1,146 @@
 
-import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import React, { useState } from 'react';
+import { AdminLayout } from '@/components/admin/AdminLayout';
+import { ProjectStatsOverview } from '@/components/admin/project/ProjectStatsOverview';
 import ProjectParametersList from '@/components/admin/project/ProjectParametersList';
-import ProjectStatsOverview from '@/components/admin/project/ProjectStatsOverview';
-import NewPartnerForm from '@/components/admin/project/NewPartnerForm';
-import { Link } from 'react-router-dom';
-import Navbar from '@/components/Navbar';
-import { 
-  ArrowLeft, 
-  Cog, 
-  BarChart3, 
-  Users, 
-  Leaf
-} from 'lucide-react';
-import TribalBackground from '@/components/TribalBackground';
-import { ProjectParameter, ProjectStats } from '@/types/project';
-
-// Mock data for project stats
-const mockProjectStats: ProjectStats = {
-  totalFarms: 8,
-  totalTokenHolders: 325,
-  totalHectares: 20,
-  averageYield: 11.2,
-  projectValue: 600000
-};
-
-// Mock data for project parameters
-const mockParameters: ProjectParameter[] = [
-  { 
-    id: "1", 
-    name: 'Token Price (USD)', 
-    value: "30", 
-    type: 'number',
-    description: 'Price per vanilla plant token in USD',
-    category: 'financial',
-    lastUpdated: new Date().toISOString()
-  },
-  { 
-    id: "2", 
-    name: 'Harvest Cycle (months)', 
-    value: "9", 
-    type: 'number',
-    description: 'Average time between harvests in months',
-    category: 'operational',
-    lastUpdated: new Date().toISOString()
-  },
-  { 
-    id: "3", 
-    name: 'Annual Plant Growth Rate (%)', 
-    value: "15", 
-    type: 'number',
-    description: 'Expected yearly growth percentage of vanilla plants',
-    category: 'operational',
-    lastUpdated: new Date().toISOString()
-  },
-  { 
-    id: "4", 
-    name: 'First Harvest Year', 
-    value: "4", 
-    type: 'number',
-    description: 'Number of years until first harvest',
-    category: 'operational',
-    lastUpdated: new Date().toISOString()
-  },
-  { 
-    id: "5", 
-    name: 'New Plant Value Increment ($)', 
-    value: "2", 
-    type: 'number',
-    description: 'Annual value increase per plant in USD',
-    category: 'financial',
-    lastUpdated: new Date().toISOString()
-  },
-  { 
-    id: "6", 
-    name: 'DAO Governance Fee (%)', 
-    value: "1.5", 
-    type: 'number',
-    description: 'Percentage fee charged for DAO governance',
-    category: 'other',
-    lastUpdated: new Date().toISOString()
-  },
-];
+import { NewPartnerForm } from '@/components/admin/project/NewPartnerForm';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ProjectStats, ProjectParameter } from '@/types/project';
 
 const ProjectAdmin = () => {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [projectParameters, setProjectParameters] = useState<ProjectParameter[]>(mockParameters);
-  
-  const handleParameterUpdate = (parameter: ProjectParameter) => {
-    setProjectParameters(prev => 
-      prev.map(param => param.id === parameter.id ? parameter : param)
-    );
-    // Here you would typically update the backend as well
+  // Sample project statistics
+  const projectStats: ProjectStats = {
+    totalUsers: 1240,
+    activeUsers: 892,
+    totalTokens: 20000,
+    tokenCirculation: 16400,
+    averageYield: 11.2,
+    harvestFrequency: 'Quarterly'
   };
-  
-  const handlePartnerSubmit = (partnerData: any) => {
-    console.log('New partner submitted:', partnerData);
-    // Here you would typically send the data to the backend
+
+  // Sample project parameters for demo
+  const [parameters, setParameters] = useState<ProjectParameter[]>([
+    {
+      id: '1',
+      name: 'Initial Token Price',
+      description: 'The price of a single vanilla plant token at launch',
+      value: '30',  // Changed to string
+      category: 'financial',
+      lastUpdated: '2023-06-15T10:30:00Z'
+    },
+    {
+      id: '2',
+      name: 'Target Yield',
+      description: 'Annual yield target for token holders from harvest',
+      value: '12',  // Changed to string
+      category: 'financial',
+      lastUpdated: '2023-07-22T14:15:00Z'
+    },
+    {
+      id: '3',
+      name: 'Harvest Revenue Share',
+      description: 'Percentage of harvest revenue distributed to token holders',
+      value: '80',  // Changed to string
+      category: 'financial',
+      lastUpdated: '2023-08-05T09:45:00Z'
+    },
+    {
+      id: '4',
+      name: 'Vanilla Species',
+      description: 'The species of vanilla being cultivated on the farm',
+      value: 'Vanilla planifolia',
+      category: 'agricultural',  // Using the new valid category
+      lastUpdated: '2023-05-10T16:20:00Z'
+    },
+    {
+      id: '5',
+      name: 'Planting Density',
+      description: 'Number of vanilla plants per hectare',
+      value: '1000',  // Changed to string
+      category: 'operational',
+      lastUpdated: '2023-09-18T11:10:00Z'
+    },
+    {
+      id: '6',
+      name: 'Farm Size',
+      description: 'Total area of the vanilla farm in hectares',
+      value: '20',  // Changed to string
+      category: 'agricultural',  // Using the new valid category
+      lastUpdated: '2023-04-30T13:25:00Z'
+    },
+    {
+      id: '7',
+      name: 'Carbon Credits',
+      description: 'Annual carbon credits generated by farm operations',
+      value: '500',  // Changed to string
+      category: 'agricultural',  // Using the new valid category
+      lastUpdated: '2023-10-12T15:40:00Z'
+    },
+    {
+      id: '8',
+      name: 'DAO Voting Threshold',
+      description: 'Minimum percentage of votes needed for proposal approval',
+      value: '60',  // Changed to string
+      category: 'governance',  // Using the new valid category
+      lastUpdated: '2023-11-25T10:05:00Z'
+    }
+  ]);
+
+  // Handle parameter updates
+  const handleParameterUpdate = (updatedParameter: ProjectParameter) => {
+    setParameters(parameters.map(param => 
+      param.id === updatedParameter.id ? updatedParameter : param
+    ));
   };
-  
+
   return (
-    <div className="min-h-screen bg-earth-900 text-vanilla-100">
-      <Navbar />
-      <TribalBackground />
-      
-      <div className="container mx-auto pt-24 pb-12 px-4">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <Link to="/dashboard" className="text-vanilla-300 hover:text-vanilla-100 flex items-center mb-4">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Dashboard
-            </Link>
-            <h1 className="text-3xl font-display text-vanilla-100">Project Administration</h1>
-            <p className="text-vanilla-300 mt-2">Manage project parameters, statistics and partnership details</p>
-          </div>
-        </div>
+    <AdminLayout title="Project Administration">
+      <Tabs defaultValue="overview" className="space-y-6">
+        <TabsList className="bg-earth-700">
+          <TabsTrigger value="overview" className="data-[state=active]:bg-earth-600">Overview</TabsTrigger>
+          <TabsTrigger value="parameters" className="data-[state=active]:bg-earth-600">Parameters</TabsTrigger>
+          <TabsTrigger value="partners" className="data-[state=active]:bg-earth-600">Partners</TabsTrigger>
+        </TabsList>
         
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-earth-800 border border-earth-700 p-1">
-            <TabsTrigger 
-              value="overview" 
-              className="data-[state=active]:bg-earth-700 data-[state=active]:text-vanilla-100"
-            >
-              <BarChart3 className="h-4 w-4 mr-2" />
-              Project Overview
-            </TabsTrigger>
-            <TabsTrigger 
-              value="parameters" 
-              className="data-[state=active]:bg-earth-700 data-[state=active]:text-vanilla-100"
-            >
-              <Cog className="h-4 w-4 mr-2" />
-              Project Parameters
-            </TabsTrigger>
-            <TabsTrigger 
-              value="partners" 
-              className="data-[state=active]:bg-earth-700 data-[state=active]:text-vanilla-100"
-            >
-              <Users className="h-4 w-4 mr-2" />
-              Farm Partners
-            </TabsTrigger>
-          </TabsList>
+        <TabsContent value="overview" className="space-y-6">
+          <ProjectStatsOverview stats={projectStats} />
+          <div className="bg-earth-800/50 rounded-xl p-6">
+            <h2 className="text-xl font-medium text-vanilla-100 mb-4">Recent Project Updates</h2>
+            <p className="text-vanilla-300">
+              This section will display recent changes and updates to the project. Future development will include 
+              an activity feed showing parameter changes, partnership announcements, and governance decisions.
+            </p>
+          </div>
+        </TabsContent>
+        
+        <TabsContent value="parameters" className="space-y-6">
+          <div className="bg-earth-800/50 rounded-xl p-6 mb-6">
+            <h2 className="text-xl font-medium text-vanilla-100 mb-4">Project Parameters</h2>
+            <p className="text-vanilla-300 mb-4">
+              These parameters define the core attributes and performance metrics of the vanilla farming project. 
+              Updates to these values will be reflected across the platform and communicated to stakeholders.
+            </p>
+          </div>
           
-          <TabsContent value="overview" className="space-y-6">
-            <ProjectStatsOverview stats={mockProjectStats} />
-          </TabsContent>
+          <ProjectParametersList 
+            parameters={parameters} 
+            onUpdate={handleParameterUpdate} 
+          />
+        </TabsContent>
+        
+        <TabsContent value="partners" className="space-y-6">
+          <div className="bg-earth-800/50 rounded-xl p-6 mb-6">
+            <h2 className="text-xl font-medium text-vanilla-100 mb-4">Project Partners</h2>
+            <p className="text-vanilla-300 mb-4">
+              Manage partnerships with organizations that contribute to the Vanilla Valley ecosystem. 
+              Add new partners to showcase on the platform and in marketing materials.
+            </p>
+          </div>
           
-          <TabsContent value="parameters" className="space-y-6">
-            <div className="grid gap-6">
-              <div className="bg-earth-800/50 border border-earth-700 p-6 rounded-xl">
-                <h2 className="text-xl font-medium mb-4 flex items-center">
-                  <Cog className="h-5 w-5 mr-2 text-vanilla-500" />
-                  Project Parameters
-                </h2>
-                <p className="text-vanilla-300 mb-6">
-                  Modify the core parameters that define how the Vanilla Valley ecosystem operates. 
-                  Changes made here will affect various aspects of the project.
-                </p>
-                <ProjectParametersList parameters={projectParameters} onUpdate={handleParameterUpdate} />
-              </div>
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="partners" className="space-y-6">
-            <div className="bg-earth-800/50 border border-earth-700 p-6 rounded-xl">
-              <h2 className="text-xl font-medium mb-4 flex items-center">
-                <Leaf className="h-5 w-5 mr-2 text-vanilla-500" />
-                Add New Farm Partner
-              </h2>
-              <p className="text-vanilla-300 mb-6">
-                Register a new farm partner to be included in the Vanilla Valley ecosystem.
-                Complete all required information to ensure proper integration.
-              </p>
-              <NewPartnerForm onSubmit={handlePartnerSubmit} />
-            </div>
-          </TabsContent>
-        </Tabs>
-      </div>
-    </div>
+          <NewPartnerForm />
+        </TabsContent>
+      </Tabs>
+    </AdminLayout>
   );
 };
 

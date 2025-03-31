@@ -72,6 +72,8 @@ const ParameterEditDialog: React.FC<ParameterEditDialogProps> = ({
                 <SelectItem value="financial">Financial</SelectItem>
                 <SelectItem value="operational">Operational</SelectItem>
                 <SelectItem value="technical">Technical</SelectItem>
+                <SelectItem value="agricultural">Agricultural</SelectItem>
+                <SelectItem value="governance">Governance</SelectItem>
                 <SelectItem value="other">Other</SelectItem>
               </SelectContent>
             </Select>

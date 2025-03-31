@@ -77,7 +77,7 @@
 
   /* Tribal button */
   .tribal-button {
-    @apply bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950 relative overflow-hidden;
+    @apply bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 relative overflow-hidden;
     transition: all 0.3s ease;
   }
 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Farm } from '@/types/farm';
@@ -10,10 +9,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
 interface NewPartnerFormProps {
-  onSubmit: (data: Farm) => void;
+  onSubmit?: (data: Farm) => void;
 }
 
-const NewPartnerForm: React.FC<NewPartnerFormProps> = ({ onSubmit }) => {
+const NewPartnerForm: React.FC<NewPartnerFormProps> = ({ onSubmit = () => {} }) => {
   const form = useForm<Partial<Farm>>({
     defaultValues: {
       name: '',
@@ -43,9 +42,8 @@ const NewPartnerForm: React.FC<NewPartnerFormProps> = ({ onSubmit }) => {
   });
 
   const handleSubmit = (data: Partial<Farm>) => {
-    // Create a new farm with a unique ID
     const newFarm: Farm = {
-      id: `farm${Date.now()}`, // Simple way to generate a unique ID
+      id: `farm${Date.now()}`,
       name: data.name || 'New Farm',
       location: data.location || 'Unknown',
       hectares: data.hectares || 0,
@@ -269,4 +267,5 @@ const NewPartnerForm: React.FC<NewPartnerFormProps> = ({ onSubmit }) => {
   );
 };
 
+export { NewPartnerForm };
 export default NewPartnerForm;

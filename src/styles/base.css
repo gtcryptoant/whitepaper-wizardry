@@ -88,8 +88,12 @@
     @apply border-border;
   }
 
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-earth-900 text-vanilla-100 font-sans;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -106,10 +110,15 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/30 rounded-full;
+    @apply bg-earth-700 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/50;
+    @apply bg-vanilla-700;
+  }
+  
+  /* Set default dark theme */
+  :root {
+    color-scheme: dark;
   }
 }

@@ -26,3 +26,71 @@
 .pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
 }
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes leaf-sway {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.leaf-sway {
+  transform-origin: bottom center;
+  animation: leaf-sway 4s ease-in-out infinite;
+}
+
+@keyframes vanilla-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(255, 211, 107, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(255, 211, 107, 0.8));
+  }
+}
+
+.vanilla-glow {
+  animation: vanilla-glow 5s ease-in-out infinite;
+}
+
+@keyframes grow-fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.grow-fade-in {
+  animation: grow-fade 0.5s ease-out forwards;
+}
+
+@keyframes shadow-pulse {
+  0%, 100% {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.shadow-pulse {
+  animation: shadow-pulse 10s ease-in-out infinite;
+}

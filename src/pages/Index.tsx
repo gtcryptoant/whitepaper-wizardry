@@ -1,14 +1,28 @@
-import { useEffect, useRef } from 'react';
+
+import { useEffect, useState, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import TokenomicsChart from '@/components/TokenomicsChart';
 import RoadmapTimeline from '@/components/RoadmapTimeline';
 import TeamCard from '@/components/TeamCard';
+import InvestmentCalculator from '@/components/InvestmentCalculator';
+import TribalBackground from '@/components/TribalBackground';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BarChart3, Globe, Leaf, TrendingUp, Wallet } from 'lucide-react';
 
 const Index = () => {
+  const [showCalculator, setShowCalculator] = useState(false);
+  const calculatorRef = useRef<HTMLDivElement>(null);
+
+  // Smooth scrolling to calculator
+  const scrollToCalculator = () => {
+    setShowCalculator(true);
+    setTimeout(() => {
+      calculatorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -30,17 +44,86 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-vanilla-50 dark:bg-earth-900 text-earth-900 dark:text-vanilla-100">
+    <div className="min-h-screen bg-earth-900 text-vanilla-100 overflow-x-hidden">
       <Navbar />
+      <TribalBackground />
       <HeroSection />
 
-      {/* Vision Section */}
-      <section id="vision" className="section bg-white dark:bg-earth-950 relative overflow-hidden">
+      {/* Investment Calculator Section */}
+      <section id="calculator" className="section bg-earth-950/70 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
+        <div className="absolute inset-0 opacity-10">
+          <img 
+            src="/lovable-uploads/7ab69912-8f43-4b6f-af05-793f103134e3.png" 
+            alt="Vanilla Plant Background" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container-padding relative z-10">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="section-title reveal-on-scroll">Investment Calculator</h2>
+            <p className="section-subtitle text-vanilla-300 reveal-on-scroll">
+              Calculate your potential returns from investing in Vanilla Valley tokens based on our proven growth model.
+            </p>
+            <Button 
+              onClick={scrollToCalculator}
+              className="bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950 mt-4 animate-pulse-glow"
+            >
+              Calculate Your Returns <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+          
+          <div ref={calculatorRef} className="mb-12">
+            <InvestmentCalculator 
+              initialTokenPrice={30} 
+              className="hover:shadow-xl hover:shadow-vanilla-500/10 transition-all duration-500"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 reveal-on-scroll">
+            {[
+              {
+                title: "Sustainable Growth",
+                description: "Vanilla plants increase in value over time, providing long-term capital appreciation.",
+                icon: <Leaf className="h-6 w-6 text-vanilla-500" />
+              },
+              {
+                title: "Harvest Yield",
+                description: "From year 4 onwards, receive income from vanilla bean harvests distributed to token holders.",
+                icon: <TrendingUp className="h-6 w-6 text-vanilla-500" />
+              },
+              {
+                title: "Token Liquidity",
+                description: "Trade your tokens on our marketplace, providing flexibility for your investment strategy.",
+                icon: <Wallet className="h-6 w-6 text-vanilla-500" />
+              }
+            ].map((feature, idx) => (
+              <div key={idx} className="bg-earth-800/60 border border-earth-700 rounded-xl p-6 hover-scale pulse-glow">
+                <div className="bg-earth-700/50 rounded-full p-3 inline-block mb-4">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-display mb-2 text-vanilla-100">{feature.title}</h3>
+                <p className="text-vanilla-300">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Vision Section */}
+      <section id="vision" className="section bg-earth-950/80 relative overflow-hidden">
+        <div className="absolute inset-0 bg-noise"></div>
+        <div className="absolute inset-0 opacity-10">
+          <img 
+            src="/lovable-uploads/a7b433b5-b629-440d-b554-1dddecb27e36.png" 
+            alt="Vanilla Plantation Background" 
+            className="w-full h-full object-cover"
+          />
+        </div>
         <div className="container-padding relative z-10">
           <div className="text-center mb-16">
             <h2 className="section-title reveal-on-scroll">Our Vision</h2>
-            <p className="section-subtitle reveal-on-scroll">
+            <p className="section-subtitle text-vanilla-300 reveal-on-scroll">
               Vanilla Valley is reimagining how agricultural assets are owned, traded, and valued in the digital age, creating a more transparent and profitable ecosystem for farmers, investors, and consumers.
             </p>
           </div>
@@ -80,26 +163,26 @@ const Index = () => {
             ].map((feature, index) => (
               <div 
                 key={index}
-                className="bg-vanilla-50 dark:bg-earth-900/50 border border-vanilla-200 dark:border-earth-800 rounded-xl p-6 hover-scale reveal-on-scroll"
+                className="bg-earth-800/50 border border-earth-700 rounded-xl p-6 hover-scale reveal-on-scroll"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="bg-vanilla-100 dark:bg-earth-800 rounded-full p-3 inline-block mb-4 text-vanilla-600 dark:text-vanilla-500">
+                <div className="bg-earth-700/60 rounded-full p-3 inline-block mb-4 text-vanilla-500">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-display mb-2">{feature.title}</h3>
-                <p className="text-earth-700 dark:text-vanilla-200">{feature.description}</p>
+                <h3 className="text-xl font-display mb-2 text-vanilla-100">{feature.title}</h3>
+                <p className="text-vanilla-200">{feature.description}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-16 pt-8 border-t border-vanilla-200 dark:border-earth-800">
+          <div className="mt-16 pt-8 border-t border-earth-700">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="order-2 lg:order-1 reveal-on-scroll">
                 <h3 className="text-2xl font-display mb-4">Real Assets, Digital Innovation</h3>
-                <p className="text-earth-700 dark:text-vanilla-200 mb-6">
+                <p className="text-vanilla-200 mb-6">
                   Vanilla Valley bridges the gap between traditional agriculture and blockchain technology. By tokenizing vanilla farms, we create a new asset class that combines the stability of real-world agriculture with the liquidity and accessibility of digital assets.
                 </p>
-                <p className="text-earth-700 dark:text-vanilla-200 mb-6">
+                <p className="text-vanilla-200 mb-6">
                   Our model ensures farmers receive fair compensation while investors gain exposure to an uncorrelated asset class with attractive yields. The transparency of blockchain technology creates trust in a market historically plagued by opacity and intermediaries.
                 </p>
                 <Button className="bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950">
@@ -108,11 +191,11 @@ const Index = () => {
               </div>
               <div className="order-1 lg:order-2 reveal-on-scroll">
                 <div className="relative">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-vanilla-300 to-vanilla-500 rounded-2xl blur opacity-30"></div>
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-vanilla-300 to-vanilla-500 rounded-2xl blur opacity-30 animate-pulse-glow"></div>
                   <div className="glass-card rounded-2xl overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1601050591292-a856e3842ec4?q=80&w=1000" 
-                      alt="Vanilla plantation" 
+                      src="/lovable-uploads/2a5b8996-11d1-484d-b087-986d9bb64e43.png" 
+                      alt="Vanilla flower" 
                       className="w-full h-64 object-cover"
                       loading="lazy"
                     />
@@ -121,26 +204,26 @@ const Index = () => {
                         <div>
                           <span className="pill">Madagascar Region</span>
                         </div>
-                        <span className="text-sm font-medium text-earth-700 dark:text-vanilla-300">Farm #0281</span>
+                        <span className="text-sm font-medium text-vanilla-300">Farm #0281</span>
                       </div>
                       <h3 className="text-xl font-display mb-2">Premium Bourbon Vanilla Farm</h3>
-                      <p className="text-earth-700 dark:text-vanilla-200 mb-4">5 hectares of certified organic vanilla cultivation with established vines and consistent production history.</p>
+                      <p className="text-vanilla-200 mb-4">5 hectares of certified organic vanilla cultivation with established vines and consistent production history.</p>
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
-                          <span className="text-earth-600 dark:text-vanilla-300">Annual Yield</span>
-                          <p className="font-medium">11.2%</p>
+                          <span className="text-vanilla-300">Annual Yield</span>
+                          <p className="font-medium text-vanilla-100">11.2%</p>
                         </div>
                         <div>
-                          <span className="text-earth-600 dark:text-vanilla-300">Harvest Cycle</span>
-                          <p className="font-medium">9 months</p>
+                          <span className="text-vanilla-300">Harvest Cycle</span>
+                          <p className="font-medium text-vanilla-100">9 months</p>
                         </div>
                         <div>
-                          <span className="text-earth-600 dark:text-vanilla-300">Token Price</span>
-                          <p className="font-medium">$175 USDC</p>
+                          <span className="text-vanilla-300">Token Price</span>
+                          <p className="font-medium text-vanilla-100">$175 USDC</p>
                         </div>
                         <div>
-                          <span className="text-earth-600 dark:text-vanilla-300">Available Supply</span>
-                          <p className="font-medium">1,280 / 2,000</p>
+                          <span className="text-vanilla-300">Available Supply</span>
+                          <p className="font-medium text-vanilla-100">1,280 / 2,000</p>
                         </div>
                       </div>
                     </div>
@@ -153,12 +236,12 @@ const Index = () => {
       </section>
 
       {/* Tokenomics Section */}
-      <section id="tokenomics" className="section bg-vanilla-50 dark:bg-earth-900 relative overflow-hidden">
+      <section id="tokenomics" className="section bg-earth-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="container-padding relative z-10">
           <div className="text-center mb-16">
             <h2 className="section-title reveal-on-scroll">Tokenomics</h2>
-            <p className="section-subtitle reveal-on-scroll">
+            <p className="section-subtitle text-vanilla-300 reveal-on-scroll">
               The Vanilla Valley token ($VNLA) is designed with careful consideration to create a sustainable economy that rewards community participation while funding ongoing development and farm acquisitions.
             </p>
           </div>
@@ -166,7 +249,7 @@ const Index = () => {
           <TokenomicsChart />
 
           <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 reveal-on-scroll">
-            <div className="bg-white dark:bg-earth-950 border border-vanilla-200 dark:border-earth-800 rounded-xl p-8">
+            <div className="bg-earth-800/60 border border-earth-700 rounded-xl p-8">
               <h3 className="text-2xl font-display mb-4">Token Utility</h3>
               <ul className="space-y-4">
                 {[
@@ -176,18 +259,18 @@ const Index = () => {
                   "Discounted fees on the marketplace platform",
                   "Priority allocation in new farm tokenization events"
                 ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <div className="bg-vanilla-100 dark:bg-earth-800 rounded-full p-1 mr-3 mt-1">
-                      <div className="w-3 h-3 bg-vanilla-500 dark:bg-vanilla-600 rounded-full"></div>
+                  <li key={index} className="flex items-start animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
+                    <div className="bg-earth-700/60 rounded-full p-1 mr-3 mt-1">
+                      <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
                     </div>
-                    <span className="text-earth-700 dark:text-vanilla-200">{item}</span>
+                    <span className="text-vanilla-200">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-white dark:bg-earth-950 border border-vanilla-200 dark:border-earth-800 rounded-xl p-8">
+            <div className="bg-earth-800/60 border border-earth-700 rounded-xl p-8">
               <h3 className="text-2xl font-display mb-4">Staking Mechanism</h3>
-              <p className="text-earth-700 dark:text-vanilla-200 mb-6">
+              <p className="text-vanilla-200 mb-6">
                 Stake your $VNLA tokens to earn rewards from multiple sources:
               </p>
               <div className="space-y-4">
@@ -197,9 +280,9 @@ const Index = () => {
                   { title: "Liquidity Provision Bonus", value: "1-3% APY" },
                   { title: "Governance Participation", value: "0.5% APY" }
                 ].map((item, index) => (
-                  <div key={index} className="flex justify-between pb-3 border-b border-vanilla-200 dark:border-earth-800">
-                    <span className="font-medium">{item.title}</span>
-                    <span className="text-vanilla-700 dark:text-vanilla-500">{item.value}</span>
+                  <div key={index} className="flex justify-between pb-3 border-b border-earth-700 hover:border-vanilla-500 transition-colors duration-300">
+                    <span className="font-medium text-vanilla-100">{item.title}</span>
+                    <span className="text-vanilla-500">{item.value}</span>
                   </div>
                 ))}
               </div>
@@ -209,12 +292,12 @@ const Index = () => {
       </section>
 
       {/* Roadmap Section */}
-      <section id="roadmap" className="section bg-white dark:bg-earth-950 relative overflow-hidden">
+      <section id="roadmap" className="section bg-earth-950/80 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="container-padding relative z-10">
           <div className="text-center mb-16">
             <h2 className="section-title reveal-on-scroll">Project Roadmap</h2>
-            <p className="section-subtitle reveal-on-scroll">
+            <p className="section-subtitle text-vanilla-300 reveal-on-scroll">
               Our strategic vision for Vanilla Valley unfolds across several key phases, each designed to expand our ecosystem while delivering increasing value to our token holders and farm partners.
             </p>
           </div>
@@ -224,12 +307,12 @@ const Index = () => {
       </section>
 
       {/* Team Section */}
-      <section id="team" className="section bg-vanilla-50 dark:bg-earth-900 relative overflow-hidden">
+      <section id="team" className="section bg-earth-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="container-padding relative z-10">
           <div className="text-center mb-16">
             <h2 className="section-title reveal-on-scroll">Our Team</h2>
-            <p className="section-subtitle reveal-on-scroll">
+            <p className="section-subtitle text-vanilla-300 reveal-on-scroll">
               Vanilla Valley brings together experts in agriculture, blockchain technology, and sustainable finance to create a revolutionary platform for real asset tokenization.
             </p>
           </div>
@@ -280,20 +363,20 @@ const Index = () => {
       </section>
 
       {/* Join Section */}
-      <section id="join" className="section bg-gradient-to-b from-vanilla-100 to-white dark:from-earth-950 dark:to-earth-900 relative overflow-hidden">
+      <section id="join" className="section bg-gradient-to-b from-earth-950 to-earth-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="container-padding relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="section-title reveal-on-scroll">Join the Vanilla Valley Community</h2>
-            <p className="text-xl text-earth-700 dark:text-vanilla-200 mb-10 max-w-3xl mx-auto reveal-on-scroll">
+            <p className="text-xl text-vanilla-200 mb-10 max-w-3xl mx-auto reveal-on-scroll">
               Be part of a revolutionary movement that's redefining agricultural investment and creating sustainable value for farmers, investors, and the planet.
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-6 mb-16 reveal-on-scroll">
-              <Button className="text-lg px-8 py-6 bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950">
+              <Button className="text-lg px-8 py-6 bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950 animate-pulse-glow">
                 Join Whitelist <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" className="text-lg px-8 py-6 border-earth-700 text-earth-700 hover:bg-earth-50 dark:border-vanilla-300 dark:text-vanilla-300 dark:hover:bg-earth-800">
+              <Button variant="outline" className="text-lg px-8 py-6 border-vanilla-300 text-vanilla-300 hover:bg-earth-800 dark:border-vanilla-300 dark:text-vanilla-300 dark:hover:bg-earth-800">
                 Read Full Whitepaper
               </Button>
             </div>
@@ -305,9 +388,9 @@ const Index = () => {
                 { label: "Total Committed", value: "$3.2M USDC" },
                 { label: "Launch Date", value: "August 2023" }
               ].map((stat, index) => (
-                <div key={index} className="bg-white dark:bg-earth-950 border border-vanilla-200 dark:border-earth-800 rounded-xl p-6 hover-scale">
-                  <div className="text-3xl font-display text-vanilla-700 dark:text-vanilla-500 mb-2">{stat.value}</div>
-                  <div className="text-earth-700 dark:text-vanilla-200">{stat.label}</div>
+                <div key={index} className="bg-earth-800/60 border border-earth-700 rounded-xl p-6 hover-scale animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <div className="text-3xl font-display text-vanilla-500 mb-2">{stat.value}</div>
+                  <div className="text-vanilla-200">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -316,7 +399,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-earth-900 text-vanilla-100 py-12">
+      <footer className="bg-earth-950 text-vanilla-100 py-12">
         <div className="container-padding">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             <div>

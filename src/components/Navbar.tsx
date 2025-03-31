@@ -20,6 +20,11 @@ const Navbar = () => {
   }, []);
   
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleConnect = () => {
+    console.log('Connecting wallet...');
+    // Wallet connection logic will be implemented here
+  };
   
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -66,7 +71,7 @@ const Navbar = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-4">
-            <ConnectWallet />
+            <ConnectWallet onConnect={handleConnect} />
           </div>
           
           {/* Mobile Menu Button */}
@@ -118,7 +123,7 @@ const Navbar = () => {
               Project Administration
             </Link>
             <div className="pt-4">
-              <ConnectWallet />
+              <ConnectWallet onConnect={handleConnect} />
             </div>
           </div>
         </div>

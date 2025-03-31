@@ -22,7 +22,8 @@ const App = () => (
           name="description" 
           content="Vanilla Valley brings together vanilla farming with blockchain technology to create transparent, sustainable, and profitable ownership of real-world vanilla assets."
         />
-        <meta name="theme-color" content="#FFD36B" />
+        <meta name="theme-color" content="#201C14" /> {/* Dark earth theme for browser UI */}
+        <body className="dark" /> {/* Force dark mode */}
       </Helmet>
       <Toaster />
       <Sonner />

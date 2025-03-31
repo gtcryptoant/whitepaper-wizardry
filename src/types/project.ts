@@ -4,6 +4,7 @@ export interface ProjectParameter {
   name: string;
   description: string;
   value: string;
+  type?: string;
   category: 'financial' | 'operational' | 'technical' | 'other';
   lastUpdated: string;
 }

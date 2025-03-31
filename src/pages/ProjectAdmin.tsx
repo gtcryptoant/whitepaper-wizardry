@@ -16,8 +16,41 @@ import {
 } from 'lucide-react';
 import TribalBackground from '@/components/TribalBackground';
 
+// Mock data for project stats
+const mockProjectStats = {
+  totalFarms: 8,
+  totalTokens: 20000,
+  tokensSold: 12800,
+  averageYield: 11.2,
+  totalInvestment: 384000,
+  harvestValue: 75200
+};
+
+// Mock data for project parameters
+const mockParameters = [
+  { id: 1, name: 'Token Price (USD)', value: 30, type: 'number' },
+  { id: 2, name: 'Harvest Cycle (months)', value: 9, type: 'number' },
+  { id: 3, name: 'Annual Plant Growth Rate (%)', value: 15, type: 'number' },
+  { id: 4, name: 'First Harvest Year', value: 4, type: 'number' },
+  { id: 5, name: 'New Plant Value Increment ($)', value: 2, type: 'number' },
+  { id: 6, name: 'DAO Governance Fee (%)', value: 1.5, type: 'number' },
+];
+
 const ProjectAdmin = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  const [projectParameters, setProjectParameters] = useState(mockParameters);
+  
+  const handleParameterUpdate = (id: number, newValue: number | string) => {
+    setProjectParameters(prev => 
+      prev.map(param => param.id === id ? { ...param, value: newValue } : param)
+    );
+    // Here you would typically update the backend as well
+  };
+  
+  const handlePartnerSubmit = (partnerData: any) => {
+    console.log('New partner submitted:', partnerData);
+    // Here you would typically send the data to the backend
+  };
   
   return (
     <div className="min-h-screen bg-earth-900 text-vanilla-100">
@@ -62,7 +95,7 @@ const ProjectAdmin = () => {
           </TabsList>
           
           <TabsContent value="overview" className="space-y-6">
-            <ProjectStatsOverview />
+            <ProjectStatsOverview stats={mockProjectStats} />
           </TabsContent>
           
           <TabsContent value="parameters" className="space-y-6">
@@ -76,7 +109,7 @@ const ProjectAdmin = () => {
                   Modify the core parameters that define how the Vanilla Valley ecosystem operates. 
                   Changes made here will affect various aspects of the project.
                 </p>
-                <ProjectParametersList />
+                <ProjectParametersList parameters={projectParameters} onUpdate={handleParameterUpdate} />
               </div>
             </div>
           </TabsContent>
@@ -91,7 +124,7 @@ const ProjectAdmin = () => {
                 Register a new farm partner to be included in the Vanilla Valley ecosystem.
                 Complete all required information to ensure proper integration.
               </p>
-              <NewPartnerForm />
+              <NewPartnerForm onSubmit={handlePartnerSubmit} />
             </div>
           </TabsContent>
         </Tabs>

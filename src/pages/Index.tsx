@@ -46,24 +46,24 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-earth-900 text-vanilla-100 overflow-x-hidden">
       <Navbar />
-      <TribalBackground />
+      <TribalBackground intensity="strong" />
       <HeroSection />
 
       {/* Investment Calculator Section */}
       <section id="calculator" className="section bg-earth-950/70 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-20">
           <img 
-            src="/lovable-uploads/7ab69912-8f43-4b6f-af05-793f103134e3.png" 
-            alt="Vanilla Plant Background" 
-            className="w-full h-full object-cover"
+            src="/lovable-uploads/5dfce7c9-0ba5-40a9-9f83-59d257a1e92a.png" 
+            alt="Vanilla Flowers"
+            className="w-full h-full object-cover opacity-50"
           />
         </div>
         <div className="container-padding relative z-10">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="section-title reveal-on-scroll">Investment Calculator</h2>
             <p className="section-subtitle text-vanilla-300 reveal-on-scroll">
-              Calculate your potential returns from investing in Vanilla Valley tokens based on our proven growth model.
+              Calculate your potential returns from investing in New Cambium's 20,000 vanilla plant tokens based on our proven growth model.
             </p>
             <Button 
               onClick={scrollToCalculator}
@@ -84,7 +84,7 @@ const Index = () => {
             {[
               {
                 title: "Sustainable Growth",
-                description: "Vanilla plants increase in value over time, providing long-term capital appreciation.",
+                description: "New Cambium's vanilla plants increase in value over time, providing long-term capital appreciation.",
                 icon: <Leaf className="h-6 w-6 text-vanilla-500" />
               },
               {
@@ -113,7 +113,7 @@ const Index = () => {
       {/* Vision Section */}
       <section id="vision" className="section bg-earth-950/80 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-20">
           <img 
             src="/lovable-uploads/a7b433b5-b629-440d-b554-1dddecb27e36.png" 
             alt="Vanilla Plantation Background" 
@@ -178,12 +178,12 @@ const Index = () => {
           <div className="mt-16 pt-8 border-t border-earth-700">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="order-2 lg:order-1 reveal-on-scroll">
-                <h3 className="text-2xl font-display mb-4">Real Assets, Digital Innovation</h3>
+                <h3 className="text-2xl font-display mb-4">Real Vanilla Assets, Sustainable Growth</h3>
                 <p className="text-vanilla-200 mb-6">
-                  Vanilla Valley bridges the gap between traditional agriculture and blockchain technology. By tokenizing vanilla farms, we create a new asset class that combines the stability of real-world agriculture with the liquidity and accessibility of digital assets.
+                  New Cambium's farm in the Dominican Republic spans 20 hectares with 20,000 tokenized vanilla plants. By combining traditional agriculture with innovative technology, we're creating a sustainable ecosystem that benefits both farmers and investors.
                 </p>
                 <p className="text-vanilla-200 mb-6">
-                  Our model ensures farmers receive fair compensation while investors gain exposure to an uncorrelated asset class with attractive yields. The transparency of blockchain technology creates trust in a market historically plagued by opacity and intermediaries.
+                  Our commitment extends beyond vanilla production – we actively reforest the land, promoting biodiversity and carbon sequestration. This holistic approach ensures long-term sustainability while delivering attractive returns.
                 </p>
                 <Button className="bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950">
                   Learn More <ArrowRight className="ml-2 h-4 w-4" />
@@ -194,20 +194,20 @@ const Index = () => {
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-vanilla-300 to-vanilla-500 rounded-2xl blur opacity-30 animate-pulse-glow"></div>
                   <div className="glass-card rounded-2xl overflow-hidden">
                     <img 
-                      src="/lovable-uploads/2a5b8996-11d1-484d-b087-986d9bb64e43.png" 
-                      alt="Vanilla flower" 
+                      src="/lovable-uploads/5dfce7c9-0ba5-40a9-9f83-59d257a1e92a.png" 
+                      alt="New Cambium Vanilla Flowers" 
                       className="w-full h-64 object-cover"
                       loading="lazy"
                     />
                     <div className="p-6">
                       <div className="flex justify-between items-center mb-4">
                         <div>
-                          <span className="pill">Madagascar Region</span>
+                          <span className="pill">Dominican Republic</span>
                         </div>
-                        <span className="text-sm font-medium text-vanilla-300">Farm #0281</span>
+                        <span className="text-sm font-medium text-vanilla-300">New Cambium Farm</span>
                       </div>
                       <h3 className="text-xl font-display mb-2">Premium Bourbon Vanilla Farm</h3>
-                      <p className="text-vanilla-200 mb-4">5 hectares of certified organic vanilla cultivation with established vines and consistent production history.</p>
+                      <p className="text-vanilla-200 mb-4">20 hectares of certified organic vanilla cultivation with active reforestation and sustainable farming practices.</p>
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
                           <span className="text-vanilla-300">Annual Yield</span>
@@ -219,11 +219,11 @@ const Index = () => {
                         </div>
                         <div>
                           <span className="text-vanilla-300">Token Price</span>
-                          <p className="font-medium text-vanilla-100">$175 USDC</p>
+                          <p className="font-medium text-vanilla-100">$30 USDC</p>
                         </div>
                         <div>
-                          <span className="text-vanilla-300">Available Supply</span>
-                          <p className="font-medium text-vanilla-100">1,280 / 2,000</p>
+                          <span className="text-vanilla-300">Total Supply</span>
+                          <p className="font-medium text-vanilla-100">20,000 tokens</p>
                         </div>
                       </div>
                     </div>

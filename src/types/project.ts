@@ -6,10 +6,10 @@ export interface ProjectStats {
   tokenCirculation: number;
   averageYield: number;
   harvestFrequency: string;
-  totalFarms: number;
-  totalTokenHolders: number;
-  totalHectares: number;
-  projectValue: number;
+  totalFarms?: number;
+  totalTokenHolders?: number;
+  totalHectares?: number;
+  projectValue?: number;
 }
 
 export type ParameterCategory = 'financial' | 'operational' | 'technical' | 'agricultural' | 'governance' | 'other';

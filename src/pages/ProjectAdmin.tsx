@@ -1,24 +1,25 @@
+
 import React, { useState } from 'react';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { ProjectStatsOverview } from '@/components/admin/project/ProjectStatsOverview';
 import ProjectParametersList from '@/components/admin/project/ProjectParametersList';
 import { NewPartnerForm } from '@/components/admin/project/NewPartnerForm';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ProjectStats, ProjectParameter } from '@/types/project';
+import { ProjectParameter } from '@/types/project';
 
 const ProjectAdmin = () => {
   // Sample project statistics
-  const projectStats: ProjectStats = {
+  const projectStats = {
     totalUsers: 1240,
     activeUsers: 892,
     totalTokens: 20000,
     tokenCirculation: 16400,
     averageYield: 11.2,
     harvestFrequency: 'Quarterly',
-    totalFarms: 5,
-    totalTokenHolders: 247,
-    totalHectares: 85.5,
-    projectValue: 750000
+    totalFarms: 1,
+    totalTokenHolders: 872,
+    totalHectares: 20,
+    projectValue: 600000
   };
 
   // Sample project parameters for demo
@@ -91,7 +92,7 @@ const ProjectAdmin = () => {
 
   // Handle parameter updates
   const handleParameterUpdate = (updatedParameter: ProjectParameter) => {
-    setParameters(parameters.map(param => 
+    setParameters(parameters.map((param) =>
       param.id === updatedParameter.id ? updatedParameter : param
     ));
   };
@@ -104,7 +105,7 @@ const ProjectAdmin = () => {
           <TabsTrigger value="parameters" className="data-[state=active]:bg-earth-600">Parameters</TabsTrigger>
           <TabsTrigger value="partners" className="data-[state=active]:bg-earth-600">Partners</TabsTrigger>
         </TabsList>
-        
+
         <TabsContent value="overview" className="space-y-6">
           <ProjectStatsOverview stats={projectStats} />
           <div className="bg-earth-800/50 rounded-xl p-6">
@@ -115,7 +116,7 @@ const ProjectAdmin = () => {
             </p>
           </div>
         </TabsContent>
-        
+
         <TabsContent value="parameters" className="space-y-6">
           <div className="bg-earth-800/50 rounded-xl p-6 mb-6">
             <h2 className="text-xl font-medium text-vanilla-100 mb-4">Project Parameters</h2>
@@ -124,13 +125,12 @@ const ProjectAdmin = () => {
               Updates to these values will be reflected across the platform and communicated to stakeholders.
             </p>
           </div>
-          
           <ProjectParametersList 
             parameters={parameters} 
             onUpdate={handleParameterUpdate} 
           />
         </TabsContent>
-        
+
         <TabsContent value="partners" className="space-y-6">
           <div className="bg-earth-800/50 rounded-xl p-6 mb-6">
             <h2 className="text-xl font-medium text-vanilla-100 mb-4">Project Partners</h2>
@@ -139,7 +139,6 @@ const ProjectAdmin = () => {
               Add new partners to showcase on the platform and in marketing materials.
             </p>
           </div>
-          
           <NewPartnerForm />
         </TabsContent>
       </Tabs>

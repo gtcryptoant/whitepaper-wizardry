@@ -4,7 +4,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ProjectParametersList from '@/components/admin/project/ProjectParametersList';
 import ProjectStatsOverview from '@/components/admin/project/ProjectStatsOverview';
 import NewPartnerForm from '@/components/admin/project/NewPartnerForm';
-import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import { 
@@ -15,34 +14,86 @@ import {
   Leaf
 } from 'lucide-react';
 import TribalBackground from '@/components/TribalBackground';
+import { ProjectParameter, ProjectStats } from '@/types/project';
 
 // Mock data for project stats
-const mockProjectStats = {
+const mockProjectStats: ProjectStats = {
   totalFarms: 8,
   totalTokens: 20000,
   tokensSold: 12800,
   averageYield: 11.2,
   totalInvestment: 384000,
-  harvestValue: 75200
+  harvestValue: 75200,
+  totalTokenHolders: 325,
+  totalHectares: 20,
+  projectValue: 600000
 };
 
 // Mock data for project parameters
-const mockParameters = [
-  { id: 1, name: 'Token Price (USD)', value: 30, type: 'number' },
-  { id: 2, name: 'Harvest Cycle (months)', value: 9, type: 'number' },
-  { id: 3, name: 'Annual Plant Growth Rate (%)', value: 15, type: 'number' },
-  { id: 4, name: 'First Harvest Year', value: 4, type: 'number' },
-  { id: 5, name: 'New Plant Value Increment ($)', value: 2, type: 'number' },
-  { id: 6, name: 'DAO Governance Fee (%)', value: 1.5, type: 'number' },
+const mockParameters: ProjectParameter[] = [
+  { 
+    id: 1, 
+    name: 'Token Price (USD)', 
+    value: 30, 
+    type: 'number',
+    description: 'Price per vanilla plant token in USD',
+    category: 'financial',
+    lastUpdated: new Date().toISOString()
+  },
+  { 
+    id: 2, 
+    name: 'Harvest Cycle (months)', 
+    value: 9, 
+    type: 'number',
+    description: 'Average time between harvests in months',
+    category: 'agricultural',
+    lastUpdated: new Date().toISOString()
+  },
+  { 
+    id: 3, 
+    name: 'Annual Plant Growth Rate (%)', 
+    value: 15, 
+    type: 'number',
+    description: 'Expected yearly growth percentage of vanilla plants',
+    category: 'agricultural',
+    lastUpdated: new Date().toISOString()
+  },
+  { 
+    id: 4, 
+    name: 'First Harvest Year', 
+    value: 4, 
+    type: 'number',
+    description: 'Number of years until first harvest',
+    category: 'agricultural',
+    lastUpdated: new Date().toISOString()
+  },
+  { 
+    id: 5, 
+    name: 'New Plant Value Increment ($)', 
+    value: 2, 
+    type: 'number',
+    description: 'Annual value increase per plant in USD',
+    category: 'financial',
+    lastUpdated: new Date().toISOString()
+  },
+  { 
+    id: 6, 
+    name: 'DAO Governance Fee (%)', 
+    value: 1.5, 
+    type: 'number',
+    description: 'Percentage fee charged for DAO governance',
+    category: 'governance',
+    lastUpdated: new Date().toISOString()
+  },
 ];
 
 const ProjectAdmin = () => {
   const [activeTab, setActiveTab] = useState('overview');
-  const [projectParameters, setProjectParameters] = useState(mockParameters);
+  const [projectParameters, setProjectParameters] = useState<ProjectParameter[]>(mockParameters);
   
-  const handleParameterUpdate = (id: number, newValue: number | string) => {
+  const handleParameterUpdate = (parameter: ProjectParameter) => {
     setProjectParameters(prev => 
-      prev.map(param => param.id === id ? { ...param, value: newValue } : param)
+      prev.map(param => param.id === parameter.id ? parameter : param)
     );
     // Here you would typically update the backend as well
   };

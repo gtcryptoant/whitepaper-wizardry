@@ -1,8 +1,9 @@
 
-import { Link } from 'react-router-dom';
-import { Twitter, Linkedin, Globe } from 'lucide-react';
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
+import { Twitter, Linkedin, Link } from 'lucide-react';
 
-interface TeamCardProps {
+interface TeamMemberProps {
   name: string;
   role: string;
   bio: string;
@@ -12,37 +13,74 @@ interface TeamCardProps {
   website?: string;
 }
 
-const TeamCard = ({ name, role, bio, imageSrc, twitter, linkedin, website }: TeamCardProps) => {
+const TeamCard: React.FC<TeamMemberProps> = ({
+  name,
+  role,
+  bio,
+  imageSrc,
+  twitter,
+  linkedin,
+  website
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="bg-earth-800/60 border border-earth-700 rounded-xl overflow-hidden hover-scale transition-all duration-300">
-      <div className="aspect-square overflow-hidden">
-        <img 
-          src={imageSrc} 
-          alt={name} 
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-        />
-      </div>
-      <div className="p-5">
-        <h3 className="text-xl font-display text-vanilla-100 mb-1">{name}</h3>
-        <div className="text-vanilla-500 text-sm font-medium mb-3">{role}</div>
-        <p className="text-vanilla-300 text-sm mb-4 line-clamp-3">{bio}</p>
-        
-        <div className="flex space-x-3">
-          {twitter && (
-            <Link to={twitter} className="text-vanilla-300 hover:text-vanilla-100 transition-colors">
-              <Twitter size={18} />
-            </Link>
-          )}
-          {linkedin && (
-            <Link to={linkedin} className="text-vanilla-300 hover:text-vanilla-100 transition-colors">
-              <Linkedin size={18} />
-            </Link>
-          )}
-          {website && (
-            <Link to={website} className="text-vanilla-300 hover:text-vanilla-100 transition-colors">
-              <Globe size={18} />
-            </Link>
-          )}
+    <div 
+      className="perspective-container w-full"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div 
+        className={cn(
+          "tilt-card w-full bg-white dark:bg-earth-900/80 border border-vanilla-200 dark:border-earth-800",
+          "rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500"
+        )}
+      >
+        <div className="aspect-[3/4] overflow-hidden relative">
+          <div 
+            className={cn(
+              "absolute inset-0 bg-cover bg-center transition-transform duration-500",
+              isHovered ? "scale-110" : "scale-100"
+            )}
+            style={{ backgroundImage: `url(${imageSrc})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70" />
+          
+          <div className="absolute bottom-0 left-0 w-full p-5 text-white">
+            <div className="transform transition-transform duration-500">
+              <div className="flex items-end justify-between">
+                <div>
+                  <h3 className="text-xl font-display mb-1">{name}</h3>
+                  <p className="text-vanilla-200 text-sm">{role}</p>
+                </div>
+                <div className="flex space-x-2">
+                  {twitter && (
+                    <a href={twitter} target="_blank" rel="noopener noreferrer" className="p-1.5 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+                      <Twitter className="h-4 w-4" />
+                    </a>
+                  )}
+                  {linkedin && (
+                    <a href={linkedin} target="_blank" rel="noopener noreferrer" className="p-1.5 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                  )}
+                  {website && (
+                    <a href={website} target="_blank" rel="noopener noreferrer" className="p-1.5 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+                      <Link className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+              <div 
+                className={cn(
+                  "overflow-hidden transition-all duration-500 ease-in-out",
+                  isHovered ? "max-h-40 mt-3 opacity-100" : "max-h-0 opacity-0"
+                )}
+              >
+                <p className="text-sm text-vanilla-100">{bio}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

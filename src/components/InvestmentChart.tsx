@@ -43,13 +43,13 @@ const InvestmentChart = ({ connected = false }: InvestmentChartProps) => {
       return (
         <div className="glass-card p-3 rounded-lg shadow-md">
           <p className="font-medium mb-1">Year {label}</p>
-          <p className="text-sm text-vanilla-300">
+          <p className="text-sm text-earth-700 dark:text-vanilla-300">
             Plant Value: ${payload[0].value}
           </p>
-          <p className="text-sm text-vanilla-300">
+          <p className="text-sm text-earth-700 dark:text-vanilla-300">
             Harvest Rewards: ${payload[1].value}
           </p>
-          <p className="text-sm font-medium text-vanilla-100">
+          <p className="text-sm font-medium text-earth-900 dark:text-vanilla-100">
             Total Value: ${payload[2].value}
           </p>
         </div>
@@ -64,7 +64,7 @@ const InvestmentChart = ({ connected = false }: InvestmentChartProps) => {
       "transition-all duration-1000 transform",
       isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
     )}>
-      <Card className="bg-earth-900/40 backdrop-blur-sm border-earth-800">
+      <Card className="bg-white/40 dark:bg-earth-900/40 backdrop-blur-sm border-vanilla-200 dark:border-earth-800">
         <CardHeader>
           <CardTitle>Investment Growth Projection</CardTitle>
         </CardHeader>
@@ -113,7 +113,7 @@ const InvestmentChart = ({ connected = false }: InvestmentChartProps) => {
               </ResponsiveContainer>
             ) : (
               <div className="h-full flex items-center justify-center">
-                <p className="text-vanilla-400">Connect your wallet to view investment projections</p>
+                <p className="text-earth-600 dark:text-vanilla-400">Connect your wallet to view investment projections</p>
               </div>
             )}
           </div>

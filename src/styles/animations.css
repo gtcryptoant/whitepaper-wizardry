@@ -1,108 +1,96 @@
 
-@layer components {
-  /* Reveal animations */
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
   }
+  100% {
+    background-position: 1000px 0;
+  }
+}
 
-  .revealed {
-    opacity: 1;
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  background-size: 1000px 100%;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px 0px var(--tribal-color);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px var(--tribal-color);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
     transform: translateY(0);
   }
-
-  /* Floating animation */
-  @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-8px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
+  50% {
+    transform: translateY(-8px);
   }
+}
 
-  .animate-float {
-    animation: float 4s ease-in-out infinite;
-  }
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
 
-  /* Pulse glow animation */
-  @keyframes pulse-glow {
-    0% {
-      box-shadow: 0 0 0 0 rgba(255, 242, 219, 0.1);
-    }
-    70% {
-      box-shadow: 0 0 0 15px rgba(255, 242, 219, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(255, 242, 219, 0);
-    }
+@keyframes leaf-sway {
+  0%, 100% {
+    transform: rotate(-2deg);
   }
+  50% {
+    transform: rotate(2deg);
+  }
+}
 
-  .animate-pulse-glow {
-    animation: pulse-glow 2s infinite;
-  }
+.leaf-sway {
+  transform-origin: bottom center;
+  animation: leaf-sway 4s ease-in-out infinite;
+}
 
-  /* Scale on hover */
-  .hover-scale {
-    transition: transform 0.3s ease-in-out;
+@keyframes vanilla-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(255, 211, 107, 0.5));
   }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(255, 211, 107, 0.8));
+  }
+}
 
-  .hover-scale:hover {
-    transform: scale(1.03);
-  }
+.vanilla-glow {
+  animation: vanilla-glow 5s ease-in-out infinite;
+}
 
-  /* Glass card */
-  .glass-card {
-    @apply bg-white/10 backdrop-blur-lg border border-white/10;
-    transition: all 0.3s ease;
+@keyframes grow-fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
   }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
-  /* Glowing text */
-  .glow-text {
-    text-shadow: 0 0 10px rgba(255, 242, 219, 0.7);
-  }
+.grow-fade-in {
+  animation: grow-fade 0.5s ease-out forwards;
+}
 
-  /* Glow on hover */
-  .glow-on-hover {
-    transition: all 0.3s ease;
+@keyframes shadow-pulse {
+  0%, 100% {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
   }
+  50% {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+}
 
-  .glow-on-hover:hover {
-    box-shadow: 0 0 15px rgba(255, 242, 219, 0.5);
-  }
-
-  /* Tribal button */
-  .tribal-button {
-    @apply bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 relative overflow-hidden;
-    transition: all 0.3s ease;
-  }
-
-  .tribal-button:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: all 0.5s;
-  }
-
-  .tribal-button:hover:before {
-    left: 100%;
-  }
-
-  /* Pill style */
-  .pill {
-    @apply inline-block bg-vanilla-500 text-earth-900 px-3 py-1 rounded-full text-xs font-medium;
-  }
+.shadow-pulse {
+  animation: shadow-pulse 10s ease-in-out infinite;
 }

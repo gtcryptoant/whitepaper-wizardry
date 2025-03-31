@@ -66,5 +66,4 @@ const ProjectStatsOverview: React.FC<ProjectStatsOverviewProps> = ({ stats }) =>
   );
 };
 
-export { ProjectStatsOverview };
 export default ProjectStatsOverview;

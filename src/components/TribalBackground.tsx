@@ -4,10 +4,9 @@ import { cn } from '@/lib/utils';
 
 interface TribalBackgroundProps {
   className?: string;
-  intensity?: 'light' | 'medium' | 'strong';
 }
 
-const TribalBackground = ({ className, intensity = 'medium' }: TribalBackgroundProps) => {
+const TribalBackground = ({ className }: TribalBackgroundProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   useEffect(() => {
@@ -21,19 +20,6 @@ const TribalBackground = ({ className, intensity = 'medium' }: TribalBackgroundP
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-    };
-    
-    // Intensity settings for opacity and pattern density
-    const opacityMap = {
-      light: 0.08,
-      medium: 0.15,
-      strong: 0.25
-    };
-    
-    const patternDensityMap = {
-      light: 20,
-      medium: 32,
-      strong: 48
     };
     
     // Tribal patterns - based on Taíno art
@@ -152,8 +138,7 @@ const TribalBackground = ({ className, intensity = 'medium' }: TribalBackgroundP
     const initElements = () => {
       elements.length = 0;
       
-      // Use pattern density based on intensity
-      const numElements = patternDensityMap[intensity];
+      const numElements = 24;
       for (let i = 0; i < numElements; i++) {
         elements.push({
           x: Math.random() * canvas.width,
@@ -161,7 +146,7 @@ const TribalBackground = ({ className, intensity = 'medium' }: TribalBackgroundP
           size: 20 + Math.random() * 40,
           pattern: Math.floor(Math.random() * patterns.length),
           alpha: 0,
-          targetAlpha: opacityMap[intensity] + Math.random() * 0.1, // Random opacity for visual variety
+          targetAlpha: 0.08 + Math.random() * 0.08, // Random opacity for visual variety
           scrollY: 0
         });
       }
@@ -208,8 +193,8 @@ const TribalBackground = ({ className, intensity = 'medium' }: TribalBackgroundP
         if (element.alpha > 0.01) {
           // Draw element
           ctx.save();
-          ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--tribal-color') || '#ffd600';
-          ctx.lineWidth = intensity === 'strong' ? 2 : 1;
+          ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--tribal-color') || '#FFD36B';
+          ctx.lineWidth = 1;
           ctx.globalAlpha = element.alpha;
           
           const y = element.y - element.scrollY * 0.1; // Parallax effect
@@ -236,7 +221,7 @@ const TribalBackground = ({ className, intensity = 'medium' }: TribalBackgroundP
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [intensity]);
+  }, []);
   
   return (
     <canvas 

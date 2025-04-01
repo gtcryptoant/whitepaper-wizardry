@@ -13,12 +13,16 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Calculator, Leaf, BarChart } from 'lucide-react';
 import { initRevealAnimations, initParallaxEffects } from '@/utils/revealAnimation';
+import { useFarmStore } from '@/stores/farmStore';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [tokenCount, setTokenCount] = useState(3);
   const [tokenPrice, setTokenPrice] = useState(30);
   const [activeTab, setActiveTab] = useState("portfolio");
+  const { setIsAdmin } = useFarmStore();
+  const navigate = useNavigate();
   
   useEffect(() => {
     const cleanupReveal = initRevealAnimations();
@@ -32,7 +36,19 @@ const Dashboard = () => {
 
   const handleConnect = (connected: boolean) => {
     setIsConnected(connected);
-    // In a real app, we would fetch the user's tokens here
+    
+    // Simulate checking if the user is an admin
+    // In a real app, this would check if the user holds a specific NFT or has admin rights
+    const isAdmin = Math.random() > 0.5; // 50% chance to be an admin for demo purposes
+    
+    setIsAdmin(isAdmin);
+    
+    if (isAdmin && connected) {
+      // Redirect to admin after a short delay
+      setTimeout(() => {
+        navigate('/admin');
+      }, 500);
+    }
   };
 
   return (

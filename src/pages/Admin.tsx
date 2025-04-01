@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import FarmsList from '@/components/admin/FarmsList';
 import FarmDetails from '@/components/admin/FarmDetails';
@@ -290,4 +289,3 @@ const Admin = () => {
 };
 
 export default Admin;
-

@@ -94,3 +94,9 @@
 .shadow-pulse {
   animation: shadow-pulse 10s ease-in-out infinite;
 }
+
+/* Tribal button */
+.tribal-button {
+  @apply bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 relative overflow-hidden;
+  transition: all 0.3s ease;
+}

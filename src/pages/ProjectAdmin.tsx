@@ -15,9 +15,45 @@ import {
   Leaf
 } from 'lucide-react';
 import TribalBackground from '@/components/TribalBackground';
+import { ProjectParameter } from '@/types/project';
 
 const ProjectAdmin = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  
+  // Sample project parameters for demonstration
+  const [parameters, setParameters] = useState<ProjectParameter[]>([
+    {
+      id: '1',
+      name: 'Initial Token Price',
+      description: 'The price of a single vanilla plant token at launch',
+      value: '30',
+      category: 'financial',
+      lastUpdated: '2023-06-15T10:30:00Z'
+    },
+    {
+      id: '2',
+      name: 'Target Yield',
+      description: 'Annual yield target for token holders from harvest',
+      value: '12',
+      category: 'financial',
+      lastUpdated: '2023-07-22T14:15:00Z'
+    },
+    {
+      id: '3',
+      name: 'Harvest Revenue Share',
+      description: 'Percentage of harvest revenue distributed to token holders',
+      value: '80',
+      category: 'financial',
+      lastUpdated: '2023-08-05T09:45:00Z'
+    }
+  ]);
+  
+  // Handle parameter updates
+  const handleParameterUpdate = (updatedParameter: ProjectParameter) => {
+    setParameters(parameters.map(param => 
+      param.id === updatedParameter.id ? updatedParameter : param
+    ));
+  };
   
   return (
     <div className="min-h-screen bg-earth-900 text-vanilla-100">
@@ -76,7 +112,7 @@ const ProjectAdmin = () => {
                   Modify the core parameters that define how the Vanilla Valley ecosystem operates. 
                   Changes made here will affect various aspects of the project.
                 </p>
-                <ProjectParametersList />
+                <ProjectParametersList parameters={parameters} onUpdate={handleParameterUpdate} />
               </div>
             </div>
           </TabsContent>

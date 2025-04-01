@@ -1,28 +1,28 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { ProjectStatsOverview } from '@/components/admin/project/ProjectStatsOverview';
+import ProjectStatsOverview from '@/components/admin/project/ProjectStatsOverview';
 import ProjectParametersList from '@/components/admin/project/ProjectParametersList';
-import { NewPartnerForm } from '@/components/admin/project/NewPartnerForm';
-import { ProjectParameter } from '@/types/project';
+import NewPartnerForm from '@/components/admin/project/NewPartnerForm';
+import { ProjectParameter, ProjectStats } from '@/types/project';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { useNavigate } from 'react-router-dom';
 import { useFarmStore } from '@/stores/farmStore';
-import { useEffect } from 'react';
 
 const ProjectAdmin = () => {
   const [activeTab, setActiveTab] = useState('overview');
-  const { isAdmin } = useFarmStore();
+  const { isAdmin, farms } = useFarmStore();
   const navigate = useNavigate();
 
-  // Sample project statistics
-  const projectStats = {
-    totalUsers: 1240,
-    activeUsers: 892,
-    totalTokens: 20000,
-    tokenCirculation: 16400,
-    averageYield: 11.2,
-    harvestFrequency: 'Quarterly'
+  // Calculate project stats from the farms data
+  const projectStats: ProjectStats = {
+    totalFarms: farms.length,
+    totalTokenHolders: farms.reduce((total, farm) => total + farm.tokens.holders, 0),
+    totalHectares: farms.reduce((total, farm) => total + farm.hectares, 0),
+    averageYield: farms.length > 0 
+      ? farms.reduce((total, farm) => total + farm.performance.yield, 0) / farms.length 
+      : 0,
+    projectValue: farms.reduce((total, farm) => total + (farm.tokens.price * farm.tokens.totalSupply), 0)
   };
   
   useEffect(() => {

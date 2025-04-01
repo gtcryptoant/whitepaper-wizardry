@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -120,7 +121,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="section-title reveal-on-scroll">Our Vision</h2>
             <p className="section-subtitle text-vanilla-300 reveal-on-scroll">
-              New Cambium is a financially sustainable residential and rental community, aligned with the naturist philosophy of living in harmony with nature, each other, and ourselves. This evolving vision guides our operations and business decisions to create a regenerative, sustainable future.
+              New Cambium is a financially sustainable residential and rental community, integrating sustainable farming with thoughtfully designed living spaces. This project is focused on living in harmony with our natural world, ensuring that its growth aligns with the stewardship of the land and surrounding nature. Every decision supports a regenerative and sustainable future, fostering a deep connection between people and the environment.
             </p>
           </div>
 
@@ -189,40 +190,49 @@ const Index = () => {
                 <div className="relative">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-vanilla-300 to-vanilla-500 rounded-2xl blur opacity-30 animate-pulse-glow"></div>
                   <div className="glass-card rounded-2xl overflow-hidden border-earth-700/80 bg-clay-900/80">
-                    <img 
-                      src="/lovable-uploads/2a5b8996-11d1-484d-b087-986d9bb64e43.png" 
-                      alt="Vanilla flower" 
-                      className="w-full h-64 object-cover"
-                      loading="lazy"
-                    />
-                    <div className="p-6">
-                      <div className="flex justify-between items-center mb-4">
-                        <div>
-                          <span className="pill bg-earth-800 text-vanilla-300 hover:bg-earth-700">Dominican Republic</span>
+                    <a href="https://newcambium.org" target="_blank" rel="noopener noreferrer" className="block">
+                      <img 
+                        src="/lovable-uploads/de0f5708-0026-430b-a01d-665fffb77ff6.png" 
+                        alt="New Cambium" 
+                        className="w-full h-64 object-cover"
+                        loading="lazy"
+                      />
+                      <div className="p-6">
+                        <div className="flex justify-between items-center mb-4">
+                          <div>
+                            <span className="pill bg-earth-800 text-vanilla-300 hover:bg-earth-700">Dominican Republic</span>
+                          </div>
+                          <span className="text-sm font-medium text-vanilla-300">Farm #1</span>
                         </div>
-                        <span className="text-sm font-medium text-vanilla-300">Farm #0281</span>
+                        <div className="flex items-center space-x-3 mb-2">
+                          <img 
+                            src="/lovable-uploads/424ed580-374c-4cda-a7e0-461ff11b4bc9.png" 
+                            alt="New Cambium Logo" 
+                            className="h-8"
+                          />
+                          <h3 className="text-xl font-display">New Cambium Project</h3>
+                        </div>
+                        <p className="text-vanilla-200 mb-4">20 hectares of community development with sustainable farming and residential areas.</p>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <span className="text-vanilla-300">Annual Yield</span>
+                            <p className="font-medium text-vanilla-100">12%</p>
+                          </div>
+                          <div>
+                            <span className="text-vanilla-300">Token Supply</span>
+                            <p className="font-medium text-vanilla-100">20,000</p>
+                          </div>
+                          <div>
+                            <span className="text-vanilla-300">Token Price</span>
+                            <p className="font-medium text-vanilla-100">$20 USDC</p>
+                          </div>
+                          <div>
+                            <span className="text-vanilla-300">Available Supply</span>
+                            <p className="font-medium text-vanilla-100">2,000 / 20,000</p>
+                          </div>
+                        </div>
                       </div>
-                      <h3 className="text-xl font-display mb-2">New Cambium Project</h3>
-                      <p className="text-vanilla-200 mb-4">20 hectares of community development with sustainable farming and residential areas.</p>
-                      <div className="grid grid-cols-2 gap-4 text-sm">
-                        <div>
-                          <span className="text-vanilla-300">Annual Yield</span>
-                          <p className="font-medium text-vanilla-100">12%</p>
-                        </div>
-                        <div>
-                          <span className="text-vanilla-300">Token Supply</span>
-                          <p className="font-medium text-vanilla-100">20,000</p>
-                        </div>
-                        <div>
-                          <span className="text-vanilla-300">Token Price</span>
-                          <p className="font-medium text-vanilla-100">$20 USDC</p>
-                        </div>
-                        <div>
-                          <span className="text-vanilla-300">Available Supply</span>
-                          <p className="font-medium text-vanilla-100">15,000 / 20,000</p>
-                        </div>
-                      </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -237,7 +247,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="section-title reveal-on-scroll">Tokenomics</h2>
             <p className="section-subtitle text-vanilla-300 reveal-on-scroll">
-              The Vanilla Valley token ($VNLA) is designed with careful consideration to create a sustainable economy that rewards community participation while funding ongoing development and farm acquisitions.
+              The Vanilla Valley token ($VVT) is designed with careful consideration to create a sustainable economy that rewards community participation while funding ongoing development and farm acquisitions.
             </p>
           </div>
 
@@ -266,7 +276,7 @@ const Index = () => {
             <div className="bg-clay-800/60 border border-clay-700 rounded-xl p-8">
               <h3 className="text-2xl font-display mb-4">Staking Mechanism</h3>
               <p className="text-vanilla-200 mb-6">
-                Stake your $VNLA tokens to earn rewards from multiple sources:
+                Stake your $VVT tokens to earn rewards from multiple sources:
               </p>
               <div className="space-y-4">
                 {[

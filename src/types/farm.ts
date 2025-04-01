@@ -24,5 +24,4 @@ export interface Farm {
     lastHarvest: string;
     nextHarvest: string;
   };
-  imageUrl?: string;
 }

@@ -1,17 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import ConnectWallet from './ConnectWallet';
-import { useFarmStore } from '@/stores/farmStore';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
-  const { isAdmin } = useFarmStore();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -24,12 +21,9 @@ const Navbar = () => {
   
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const handleConnect = (connected: boolean) => {
-    if (connected && isAdmin) {
-      navigate('/admin');
-    } else if (connected) {
-      navigate('/dashboard');
-    }
+  const handleConnect = () => {
+    console.log('Connecting wallet...');
+    // Wallet connection logic will be implemented here
   };
   
   const isActive = (path: string) => {
@@ -39,9 +33,6 @@ const Navbar = () => {
   const navbarClass = `fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 ${
     isScrolled ? 'bg-earth-900/95 backdrop-blur-md shadow-md' : 'bg-transparent'
   }`;
-
-  // Only show connect wallet on home page and dashboard
-  const shouldShowWallet = location.pathname === '/' || location.pathname === '/dashboard';
   
   return (
     <nav className={navbarClass}>
@@ -61,28 +52,26 @@ const Navbar = () => {
             <Link to="/dashboard" className={`nav-link ${isActive('/dashboard') ? 'active' : ''}`}>
               Dashboard
             </Link>
-            {isAdmin && (
-              <div className="relative group">
-                <button className="nav-link flex items-center">
-                  Admin
-                  <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-earth-800 ring-1 ring-earth-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="py-1">
-                    <Link to="/admin" className="block px-4 py-2 text-sm text-vanilla-300 hover:text-vanilla-100 hover:bg-earth-700">
-                      Farm Management
-                    </Link>
-                    <Link to="/project-admin" className="block px-4 py-2 text-sm text-vanilla-300 hover:text-vanilla-100 hover:bg-earth-700">
-                      Project Administration
-                    </Link>
-                  </div>
+            <div className="relative group">
+              <button className="nav-link flex items-center">
+                Admin
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </button>
+              <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-earth-800 ring-1 ring-earth-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-1">
+                  <Link to="/admin" className="block px-4 py-2 text-sm text-vanilla-300 hover:text-vanilla-100 hover:bg-earth-700">
+                    Farm Management
+                  </Link>
+                  <Link to="/project-admin" className="block px-4 py-2 text-sm text-vanilla-300 hover:text-vanilla-100 hover:bg-earth-700">
+                    Project Administration
+                  </Link>
                 </div>
               </div>
-            )}
+            </div>
           </div>
           
           <div className="hidden md:flex items-center space-x-4">
-            {shouldShowWallet && <ConnectWallet onConnect={handleConnect} />}
+            <ConnectWallet onConnect={handleConnect} />
           </div>
           
           {/* Mobile Menu Button */}
@@ -119,29 +108,23 @@ const Navbar = () => {
             >
               Dashboard
             </Link>
-            {isAdmin && (
-              <>
-                <Link 
-                  to="/admin" 
-                  className={`text-vanilla-300 hover:text-vanilla-100 px-2 py-1 ${isActive('/admin') ? 'text-vanilla-100 font-medium' : ''}`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  Farm Management
-                </Link>
-                <Link 
-                  to="/project-admin" 
-                  className={`text-vanilla-300 hover:text-vanilla-100 px-2 py-1 ${isActive('/project-admin') ? 'text-vanilla-100 font-medium' : ''}`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  Project Administration
-                </Link>
-              </>
-            )}
-            {shouldShowWallet && (
-              <div className="pt-4">
-                <ConnectWallet onConnect={handleConnect} />
-              </div>
-            )}
+            <Link 
+              to="/admin" 
+              className={`text-vanilla-300 hover:text-vanilla-100 px-2 py-1 ${isActive('/admin') ? 'text-vanilla-100 font-medium' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Farm Management
+            </Link>
+            <Link 
+              to="/project-admin" 
+              className={`text-vanilla-300 hover:text-vanilla-100 px-2 py-1 ${isActive('/project-admin') ? 'text-vanilla-100 font-medium' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Project Administration
+            </Link>
+            <div className="pt-4">
+              <ConnectWallet onConnect={handleConnect} />
+            </div>
           </div>
         </div>
       </div>

@@ -6,7 +6,6 @@ import FarmHeader from './FarmHeader';
 import FarmOverview from './FarmOverview';
 import TokenManagement from './TokenManagement';
 import PerformanceView from './PerformanceView';
-import FarmPhotoUpload from './FarmPhotoUpload';
 import { Farm } from '@/types/farm';
 
 interface FarmDetailsContainerProps {
@@ -57,21 +56,6 @@ const FarmDetailsContainer = ({ farm, onUpdate, onIssueTokens }: FarmDetailsCont
     setEditedFarm({ ...farm });
     setIsEditing(false);
   };
-
-  const handlePhotoUpload = (imageUrl: string) => {
-    setEditedFarm({
-      ...editedFarm,
-      imageUrl
-    });
-    
-    // If not in editing mode, save immediately
-    if (!isEditing) {
-      onUpdate({
-        ...farm,
-        imageUrl
-      });
-    }
-  };
   
   return (
     <div className="space-y-6">
@@ -93,7 +77,6 @@ const FarmDetailsContainer = ({ farm, onUpdate, onIssueTokens }: FarmDetailsCont
               <TabsTrigger value="overview" className="data-[state=active]:bg-cardano-500 data-[state=active]:text-white">Overview</TabsTrigger>
               <TabsTrigger value="tokens" className="data-[state=active]:bg-cardano-500 data-[state=active]:text-white">Token Management</TabsTrigger>
               <TabsTrigger value="performance" className="data-[state=active]:bg-cardano-500 data-[state=active]:text-white">Performance</TabsTrigger>
-              <TabsTrigger value="photos" className="data-[state=active]:bg-cardano-500 data-[state=active]:text-white">Photos</TabsTrigger>
             </TabsList>
             
             <TabsContent value="overview" className="mt-6">
@@ -114,13 +97,6 @@ const FarmDetailsContainer = ({ farm, onUpdate, onIssueTokens }: FarmDetailsCont
             
             <TabsContent value="performance" className="mt-6">
               <PerformanceView farm={farm} />
-            </TabsContent>
-
-            <TabsContent value="photos" className="mt-6">
-              <FarmPhotoUpload 
-                farm={farm}
-                onPhotoUpload={handlePhotoUpload}
-              />
             </TabsContent>
           </Tabs>
         </CardContent>

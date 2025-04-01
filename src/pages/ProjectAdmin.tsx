@@ -1,36 +1,24 @@
 
-import React, { useState } from 'react';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { ProjectStatsOverview } from '@/components/admin/project/ProjectStatsOverview';
+import { useState } from 'react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ProjectParametersList from '@/components/admin/project/ProjectParametersList';
-import { NewPartnerForm } from '@/components/admin/project/NewPartnerForm';
+import ProjectStatsOverview from '@/components/admin/project/ProjectStatsOverview';
+import NewPartnerForm from '@/components/admin/project/NewPartnerForm';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import Navbar from '@/components/Navbar';
+import { 
+  ArrowLeft, 
+  Cog, 
+  BarChart3, 
+  Users, 
+  Leaf
+} from 'lucide-react';
+import TribalBackground from '@/components/TribalBackground';
 import { ProjectParameter } from '@/types/project';
-import { AdminLayout } from '@/components/admin/AdminLayout';
-import { useNavigate } from 'react-router-dom';
-import { useFarmStore } from '@/stores/farmStore';
-import { useEffect } from 'react';
 
 const ProjectAdmin = () => {
   const [activeTab, setActiveTab] = useState('overview');
-  const { isAdmin } = useFarmStore();
-  const navigate = useNavigate();
-
-  // Sample project statistics
-  const projectStats = {
-    totalUsers: 1240,
-    activeUsers: 892,
-    totalTokens: 20000,
-    tokenCirculation: 16400,
-    averageYield: 11.2,
-    harvestFrequency: 'Quarterly'
-  };
-  
-  useEffect(() => {
-    // If user is not an admin, redirect to the dashboard
-    if (!isAdmin) {
-      navigate('/dashboard');
-    }
-  }, [isAdmin, navigate]);
   
   // Sample project parameters for demonstration
   const [parameters, setParameters] = useState<ProjectParameter[]>([
@@ -66,72 +54,85 @@ const ProjectAdmin = () => {
       param.id === updatedParameter.id ? updatedParameter : param
     ));
   };
-
-  const handleSubmitPartner = (partner: any) => {
-    console.log("New partner submitted:", partner);
-    // In a real implementation, this would save the partner to the backend
-  };
   
   return (
-    <AdminLayout title="Project Administration" description="Manage global project settings and parameters">
-      <Tabs defaultValue="overview" value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="bg-earth-800 border border-earth-700">
-          <TabsTrigger 
-            value="overview" 
-            className="data-[state=active]:bg-cardano-500 data-[state=active]:text-white"
-          >
-            Overview
-          </TabsTrigger>
-          <TabsTrigger 
-            value="parameters" 
-            className="data-[state=active]:bg-cardano-500 data-[state=active]:text-white"
-          >
-            Parameters
-          </TabsTrigger>
-          <TabsTrigger 
-            value="partners" 
-            className="data-[state=active]:bg-cardano-500 data-[state=active]:text-white"
-          >
-            Partners
-          </TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="overview" className="space-y-6">
-          <ProjectStatsOverview stats={projectStats} />
-          <div className="bg-earth-800/50 rounded-xl p-6">
-            <h2 className="text-xl font-medium text-vanilla-100 mb-4">Recent Project Updates</h2>
-            <p className="text-vanilla-300">
-              This section will display recent changes and updates to the project. Future development will include 
-              an activity feed showing parameter changes, partnership announcements, and governance decisions.
-            </p>
+    <div className="min-h-screen bg-earth-900 text-vanilla-100">
+      <Navbar />
+      <TribalBackground />
+      
+      <div className="container mx-auto pt-24 pb-12 px-4">
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <Link to="/dashboard" className="text-vanilla-300 hover:text-vanilla-100 flex items-center mb-4">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Dashboard
+            </Link>
+            <h1 className="text-3xl font-display text-vanilla-100">Project Administration</h1>
+            <p className="text-vanilla-300 mt-2">Manage project parameters, statistics and partnership details</p>
           </div>
-        </TabsContent>
+        </div>
         
-        <TabsContent value="parameters" className="space-y-6">
-          <div className="bg-earth-800/50 rounded-xl p-6 mb-6">
-            <h2 className="text-xl font-medium text-vanilla-100 mb-4">Project Parameters</h2>
-            <p className="text-vanilla-300 mb-4">
-              These parameters define the core attributes and performance metrics of the vanilla farming project. 
-              Updates to these values will be reflected across the platform and communicated to stakeholders.
-            </p>
-          </div>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+          <TabsList className="bg-earth-800 border border-earth-700 p-1">
+            <TabsTrigger 
+              value="overview" 
+              className="data-[state=active]:bg-earth-700 data-[state=active]:text-vanilla-100"
+            >
+              <BarChart3 className="h-4 w-4 mr-2" />
+              Project Overview
+            </TabsTrigger>
+            <TabsTrigger 
+              value="parameters" 
+              className="data-[state=active]:bg-earth-700 data-[state=active]:text-vanilla-100"
+            >
+              <Cog className="h-4 w-4 mr-2" />
+              Project Parameters
+            </TabsTrigger>
+            <TabsTrigger 
+              value="partners" 
+              className="data-[state=active]:bg-earth-700 data-[state=active]:text-vanilla-100"
+            >
+              <Users className="h-4 w-4 mr-2" />
+              Farm Partners
+            </TabsTrigger>
+          </TabsList>
           
-          <ProjectParametersList parameters={parameters} onUpdate={handleParameterUpdate} />
-        </TabsContent>
-        
-        <TabsContent value="partners" className="space-y-6">
-          <div className="bg-earth-800/50 rounded-xl p-6 mb-6">
-            <h2 className="text-xl font-medium text-vanilla-100 mb-4">Project Partners</h2>
-            <p className="text-vanilla-300 mb-4">
-              Manage partnerships with organizations that contribute to the Vanilla Valley ecosystem. 
-              Add new partners to showcase on the platform and in marketing materials.
-            </p>
-          </div>
+          <TabsContent value="overview" className="space-y-6">
+            <ProjectStatsOverview />
+          </TabsContent>
           
-          <NewPartnerForm onSubmit={handleSubmitPartner} />
-        </TabsContent>
-      </Tabs>
-    </AdminLayout>
+          <TabsContent value="parameters" className="space-y-6">
+            <div className="grid gap-6">
+              <div className="bg-earth-800/50 border border-earth-700 p-6 rounded-xl">
+                <h2 className="text-xl font-medium mb-4 flex items-center">
+                  <Cog className="h-5 w-5 mr-2 text-vanilla-500" />
+                  Project Parameters
+                </h2>
+                <p className="text-vanilla-300 mb-6">
+                  Modify the core parameters that define how the Vanilla Valley ecosystem operates. 
+                  Changes made here will affect various aspects of the project.
+                </p>
+                <ProjectParametersList parameters={parameters} onUpdate={handleParameterUpdate} />
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="partners" className="space-y-6">
+            <div className="bg-earth-800/50 border border-earth-700 p-6 rounded-xl">
+              <h2 className="text-xl font-medium mb-4 flex items-center">
+                <Leaf className="h-5 w-5 mr-2 text-vanilla-500" />
+                Add New Farm Partner
+              </h2>
+              <p className="text-vanilla-300 mb-6">
+                Register a new farm partner to be included in the Vanilla Valley ecosystem.
+                Complete all required information to ensure proper integration.
+              </p>
+              <NewPartnerForm />
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
   );
 };
 

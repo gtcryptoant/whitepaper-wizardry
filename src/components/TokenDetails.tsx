@@ -1,8 +1,9 @@
+
 import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { CircleInfo, Zap, ArrowRight } from 'lucide-react';
+import { Info, Zap, ArrowRight } from 'lucide-react';
 import TokenHoldings from './TokenHoldings';
 import { cn } from '@/lib/utils';
 
@@ -24,9 +25,10 @@ interface TokenDetailsProps {
     };
   };
   className?: string;
+  connected?: boolean;
 }
 
-const TokenDetails = ({ tokenInfo, className }: TokenDetailsProps) => {
+const TokenDetails = ({ tokenInfo, className, connected = false }: TokenDetailsProps) => {
   const [activeTab, setActiveTab] = useState('holdings');
   
   return (
@@ -40,7 +42,7 @@ const TokenDetails = ({ tokenInfo, className }: TokenDetailsProps) => {
             </CardDescription>
           </div>
           <Button variant="ghost" size="icon" className="text-vanilla-300">
-            <CircleInfo className="h-5 w-5" />
+            <Info className="h-5 w-5" />
           </Button>
         </div>
       </CardHeader>
@@ -51,11 +53,7 @@ const TokenDetails = ({ tokenInfo, className }: TokenDetailsProps) => {
             <TabsTrigger value="rewards">Rewards</TabsTrigger>
           </TabsList>
           <TabsContent value="holdings" className="pt-4">
-            <TokenHoldings 
-              holdings={tokenInfo.holdings}
-              tokenSymbol="VVT" 
-              tokenPrice={tokenInfo.price} 
-            />
+            <TokenHoldings connected={connected} />
           </TabsContent>
           <TabsContent value="rewards" className="pt-4">
             <div className="space-y-6">

@@ -20,6 +20,25 @@ const Dashboard = () => {
   const [tokenPrice, setTokenPrice] = useState(30);
   const [activeTab, setActiveTab] = useState("portfolio");
   
+  // Sample token data for demonstration
+  const sampleTokenInfo = {
+    symbol: "VVT",
+    price: tokenPrice,
+    holdings: [
+      { wallet: "Wallet 1", amount: 10 },
+      { wallet: "Wallet 2", amount: 5 },
+      { wallet: "Wallet 3", amount: 8 }
+    ],
+    rewards: {
+      total: 25,
+      monthlyRate: 2.5,
+      apy: 12.5,
+      nextHarvest: 0.75,
+      nextStaking: 0.5,
+      nextDistributionDate: "June 15, 2024"
+    }
+  };
+
   useEffect(() => {
     const cleanupReveal = initRevealAnimations();
     const cleanupParallax = initParallaxEffects();
@@ -90,8 +109,7 @@ const Dashboard = () => {
             
             <TabsContent value="portfolio" className="space-y-8 animate-fade-in">
               <TokenDetails 
-                tokenCount={tokenCount} 
-                tokenPrice={tokenPrice} 
+                tokenInfo={sampleTokenInfo}
                 connected={isConnected} 
               />
               

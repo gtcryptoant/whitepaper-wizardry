@@ -148,7 +148,6 @@ const ProjectAdmin = () => {
     setFarms([...farms, { id, ...newFarm } as Farm]);
   };
 
-  // Calculate project stats dynamically from farms data
   const projectStats = {
     totalFarms: farms.length,
     totalTokenHolders: farms.reduce((acc, farm) => acc + farm.tokens.holders, 0),
@@ -321,7 +320,6 @@ const ProjectAdmin = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
-                    {/* Token Symbol Section */}
                     <div className="space-y-2">
                       <Label htmlFor="tokenSymbol" className="text-vanilla-200">Token Symbol</Label>
                       <Input 
@@ -334,7 +332,6 @@ const ProjectAdmin = () => {
                       </p>
                     </div>
                     
-                    {/* Vision Statement Section */}
                     <div className="space-y-2">
                       <Label htmlFor="visionStatement" className="text-vanilla-200">Project Vision</Label>
                       <Textarea 
@@ -345,7 +342,6 @@ const ProjectAdmin = () => {
                       />
                     </div>
                     
-                    {/* Farm Details Section */}
                     <div>
                       <h3 className="text-lg font-medium text-vanilla-100 mb-4">Featured Farm Details</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

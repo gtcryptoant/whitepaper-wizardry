@@ -24,4 +24,6 @@ export interface Farm {
     lastHarvest: string;
     nextHarvest: string;
   };
+  description?: string;
+  vision?: string;
 }

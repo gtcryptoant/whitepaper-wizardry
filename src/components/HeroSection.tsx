@@ -31,7 +31,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-vanilla-50 to-white dark:from-earth-900 dark:to-earth-950 overflow-hidden flex items-center justify-center">
+    <section className="relative min-h-screen bg-gradient-to-b from-clay-800 to-clay-900 overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 bg-noise opacity-75"></div>
       
       <div className="container-padding relative z-10 pt-20 pb-16 md:py-32">
@@ -44,7 +44,7 @@ export const HeroSection = () => {
               )}
             >
               <div className="inline-block mb-4">
-                <span className="pill">Blockchain-Powered Sustainable Vanilla Farming</span>
+                <span className="pill bg-earth-800 text-vanilla-100 hover:bg-earth-700">Blockchain-Powered Sustainable Vanilla Farming</span>
               </div>
             </div>
             
@@ -54,13 +54,13 @@ export const HeroSection = () => {
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               )}
             >
-              <span className="text-earth-900 dark:text-vanilla-100">Real Vanilla Farming.</span>{' '}
-              <span className="text-vanilla-600 dark:text-vanilla-500">Real Yields.</span>
+              <span className="text-vanilla-100">Real Vanilla Farming.</span>{' '}
+              <span className="text-vanilla-500">Real Yields.</span>
             </h1>
             
             <p 
               className={cn(
-                "text-xl text-earth-800 dark:text-vanilla-200 mb-8 max-w-xl text-balance transition-all duration-700 delay-100 transform",
+                "text-xl text-vanilla-200 mb-8 max-w-xl text-balance transition-all duration-700 delay-100 transform",
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               )}
             >
@@ -75,14 +75,14 @@ export const HeroSection = () => {
             >
               <Button 
                 onClick={() => scrollToSection('vision')}
-                className="text-lg px-8 py-6 bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950"
+                className="text-lg px-8 py-6 bg-vanilla-500 hover:bg-vanilla-600 text-clay-900 hover:text-clay-950"
               >
                 Explore Project <ChevronRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
                 onClick={() => scrollToSection('tokenomics')}
                 variant="outline" 
-                className="text-lg px-8 py-6 border-earth-700 text-earth-700 hover:bg-earth-50 dark:border-vanilla-300 dark:text-vanilla-300 dark:hover:bg-earth-800"
+                className="text-lg px-8 py-6 border-vanilla-300 text-vanilla-300 hover:bg-clay-800"
               >
                 View Investment Returns
               </Button>
@@ -97,29 +97,29 @@ export const HeroSection = () => {
           >
             <div className="relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-vanilla-300 to-vanilla-500 rounded-3xl blur opacity-30 animate-pulse"></div>
-              <div className="glass-card rounded-3xl overflow-hidden relative z-10">
-                <div className="aspect-video bg-vanilla-100 dark:bg-earth-800/50 rounded-3xl overflow-hidden">
+              <div className="glass-card rounded-3xl overflow-hidden relative z-10 border-earth-700/80 bg-clay-900/80">
+                <div className="aspect-video bg-clay-800/50 rounded-3xl overflow-hidden">
                   <div className="p-8 h-full flex flex-col justify-center items-center">
                     <div className="text-center mb-6">
-                      <h3 className="text-2xl font-display mb-2">Vanilla Valley Token (VVT)</h3>
-                      <p className="text-earth-700 dark:text-vanilla-200">Real assets, sustainable yields, transparent growth</p>
+                      <h3 className="text-2xl font-display mb-2">New Cambium Project (NCT)</h3>
+                      <p className="text-vanilla-200">Real assets, sustainable yields, transparent growth</p>
                     </div>
                     <div className="grid grid-cols-2 gap-4 w-full max-w-md">
-                      <div className="bg-white/60 dark:bg-earth-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
-                        <div className="text-4xl font-display text-vanilla-700 dark:text-vanilla-500 mb-1">12%</div>
-                        <div className="text-sm text-earth-700 dark:text-vanilla-300">Annual Yield</div>
+                      <div className="bg-clay-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
+                        <div className="text-4xl font-display text-vanilla-500 mb-1">12%</div>
+                        <div className="text-sm text-vanilla-300">Annual Yield</div>
                       </div>
-                      <div className="bg-white/60 dark:bg-earth-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
-                        <div className="text-4xl font-display text-vanilla-700 dark:text-vanilla-500 mb-1">250K</div>
-                        <div className="text-sm text-earth-700 dark:text-vanilla-300">Max Token Supply</div>
+                      <div className="bg-clay-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
+                        <div className="text-4xl font-display text-vanilla-500 mb-1">20K</div>
+                        <div className="text-sm text-vanilla-300">Max Token Supply</div>
                       </div>
-                      <div className="bg-white/60 dark:bg-earth-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
-                        <div className="text-4xl font-display text-vanilla-700 dark:text-vanilla-500 mb-1">$30</div>
-                        <div className="text-sm text-earth-700 dark:text-vanilla-300">Initial Token Price</div>
+                      <div className="bg-clay-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
+                        <div className="text-4xl font-display text-vanilla-500 mb-1">$20</div>
+                        <div className="text-sm text-vanilla-300">Initial Token Price</div>
                       </div>
-                      <div className="bg-white/60 dark:bg-earth-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
-                        <div className="text-4xl font-display text-vanilla-700 dark:text-vanilla-500 mb-1">4 Yrs</div>
-                        <div className="text-sm text-earth-700 dark:text-vanilla-300">First Harvest</div>
+                      <div className="bg-clay-800/60 backdrop-blur-sm rounded-xl p-4 text-center hover-scale">
+                        <div className="text-4xl font-display text-vanilla-500 mb-1">20ha</div>
+                        <div className="text-sm text-vanilla-300">Project Size</div>
                       </div>
                     </div>
                   </div>
@@ -132,7 +132,7 @@ export const HeroSection = () => {
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
           <button 
             onClick={() => scrollToSection('vision')}
-            className="bg-vanilla-100 dark:bg-earth-800 hover:bg-vanilla-200 dark:hover:bg-earth-700 text-earth-700 dark:text-vanilla-300 p-3 rounded-full transition-colors"
+            className="bg-clay-800 hover:bg-clay-700 text-vanilla-300 p-3 rounded-full transition-colors"
           >
             <ArrowDown className="h-6 w-6" />
           </button>

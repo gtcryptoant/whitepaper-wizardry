@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Calculator, Calendar, TrendingUp, Leaf, Sprout } from 'lucide-react';
@@ -13,7 +12,7 @@ interface InvestmentCalculatorProps {
   className?: string;
 }
 
-const InvestmentCalculator = ({ initialTokenPrice = 30, className }: InvestmentCalculatorProps) => {
+const InvestmentCalculator = ({ initialTokenPrice = 20, className }: InvestmentCalculatorProps) => {
   const [tokenCount, setTokenCount] = useState(1);
   const [tokenPrice, setTokenPrice] = useState(initialTokenPrice);
   const [yearsHolding, setYearsHolding] = useState(5);
@@ -30,24 +29,23 @@ const InvestmentCalculator = ({ initialTokenPrice = 30, className }: InvestmentC
   });
   const [isVisible, setIsVisible] = useState(false);
   
-  // Investment projections based on whitepaper
   const growthData = [
-    { year: 1, plantValue: 30, harvestValue: 0, totalValue: 30 },
-    { year: 2, plantValue: 60, harvestValue: 0, totalValue: 60 },
-    { year: 3, plantValue: 90, harvestValue: 0, totalValue: 90 },
-    { year: 4, plantValue: 120, harvestValue: 7.5, totalValue: 127.5 },
-    { year: 5, plantValue: 150, harvestValue: 22.5, totalValue: 172.5 },
-    { year: 6, plantValue: 210, harvestValue: 37.5, totalValue: 247.5 },
-    { year: 7, plantValue: 270, harvestValue: 52.5, totalValue: 322.5 },
-    { year: 8, plantValue: 330, harvestValue: 75, totalValue: 405 },
-    { year: 9, plantValue: 390, harvestValue: 105, totalValue: 495 },
-    { year: 10, plantValue: 450, harvestValue: 142.5, totalValue: 592.5 },
-    { year: 11, plantValue: 510, harvestValue: 180, totalValue: 690 },
-    { year: 12, plantValue: 570, harvestValue: 217.5, totalValue: 787.5 },
-    { year: 13, plantValue: 630, harvestValue: 262.5, totalValue: 892.5 },
-    { year: 14, plantValue: 690, harvestValue: 307.5, totalValue: 997.5 },
-    { year: 15, plantValue: 750, harvestValue: 352.5, totalValue: 1102.5 },
-    { year: 16, plantValue: 810, harvestValue: 397.5, totalValue: 1207.5 },
+    { year: 1, plantValue: 20, harvestValue: 0, totalValue: 20 },
+    { year: 2, plantValue: 40, harvestValue: 0, totalValue: 40 },
+    { year: 3, plantValue: 60, harvestValue: 0, totalValue: 60 },
+    { year: 4, plantValue: 80, harvestValue: 5, totalValue: 85 },
+    { year: 5, plantValue: 100, harvestValue: 15, totalValue: 115 },
+    { year: 6, plantValue: 140, harvestValue: 25, totalValue: 165 },
+    { year: 7, plantValue: 180, harvestValue: 35, totalValue: 215 },
+    { year: 8, plantValue: 220, harvestValue: 50, totalValue: 270 },
+    { year: 9, plantValue: 260, harvestValue: 70, totalValue: 330 },
+    { year: 10, plantValue: 300, harvestValue: 95, totalValue: 395 },
+    { year: 11, plantValue: 340, harvestValue: 120, totalValue: 460 },
+    { year: 12, plantValue: 380, harvestValue: 145, totalValue: 525 },
+    { year: 13, plantValue: 420, harvestValue: 175, totalValue: 595 },
+    { year: 14, plantValue: 460, harvestValue: 205, totalValue: 665 },
+    { year: 15, plantValue: 500, harvestValue: 235, totalValue: 735 },
+    { year: 16, plantValue: 540, harvestValue: 265, totalValue: 805 },
   ];
   
   useEffect(() => {
@@ -71,7 +69,6 @@ const InvestmentCalculator = ({ initialTokenPrice = 30, className }: InvestmentC
     const projectedHarvestValue = yearData.harvestValue * tokenCount;
     const projectedTotalValue = yearData.totalValue * tokenCount;
     
-    // Calculate ROI
     const roi = ((projectedTotalValue - initialInvestment) / initialInvestment) * 100;
     
     setResults({
@@ -97,7 +94,7 @@ const InvestmentCalculator = ({ initialTokenPrice = 30, className }: InvestmentC
       isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
       className
     )}>
-      <Card className="bg-white/40 dark:bg-earth-900/40 backdrop-blur-sm border-vanilla-200 dark:border-earth-800 overflow-hidden">
+      <Card className="bg-white/40 dark:bg-clay-900/40 backdrop-blur-sm border-vanilla-200 dark:border-clay-800 overflow-hidden">
         <CardHeader>
           <CardTitle className="flex items-center">
             <Calculator className="h-5 w-5 mr-2 text-vanilla-600 dark:text-vanilla-500" />
@@ -187,7 +184,7 @@ const InvestmentCalculator = ({ initialTokenPrice = 30, className }: InvestmentC
                   />
                 </div>
                 <div className="text-xs text-earth-600 dark:text-vanilla-400 mt-1">
-                  Based on the Vanilla Valley whitepaper growth model (max 16 years)
+                  Based on the New Cambium growth model (max 16 years)
                 </div>
               </div>
             </div>
@@ -239,10 +236,10 @@ const InvestmentCalculator = ({ initialTokenPrice = 30, className }: InvestmentC
           </div>
         </CardContent>
         
-        <CardFooter className="bg-vanilla-50 dark:bg-earth-950/50 px-6 py-4 text-sm text-earth-600 dark:text-vanilla-400">
+        <CardFooter className="bg-vanilla-50 dark:bg-clay-950/50 px-6 py-4 text-sm text-earth-600 dark:text-vanilla-400">
           <div>
             <p className="mb-1">
-              This calculator is based on the Vanilla Valley whitepaper growth model which includes:
+              This calculator is based on the New Cambium growth model which includes:
             </p>
             <ul className="list-disc list-inside space-y-1 pl-2">
               <li>Plant value growth ($2 per leaf pair, averaging 15 pairs annually)</li>

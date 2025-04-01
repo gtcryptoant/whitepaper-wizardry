@@ -26,7 +26,7 @@ const FarmDetailsContainer = ({ farm, onUpdate, onIssueTokens }: FarmDetailsCont
     setIsEditing(!isEditing);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     
     // Handle nested properties
@@ -40,15 +40,31 @@ const FarmDetailsContainer = ({ farm, onUpdate, onIssueTokens }: FarmDetailsCont
             [child]: Number(value)
           }
         });
+      } else if (parent === 'tokens') {
+        setEditedFarm({
+          ...editedFarm,
+          tokens: {
+            ...editedFarm.tokens,
+            [child]: child === 'symbol' ? value : Number(value)
+          }
+        });
       } else {
         // Handle other nested properties if needed
-        // This is a placeholder for future nested properties
       }
     } else {
-      setEditedFarm({
-        ...editedFarm,
-        [name]: name === 'hectares' ? Number(value) : value
-      });
+      // Handle special numeric fields
+      if (name === 'hectares') {
+        setEditedFarm({
+          ...editedFarm,
+          [name]: Number(value)
+        });
+      } else {
+        // Handle regular string fields
+        setEditedFarm({
+          ...editedFarm,
+          [name]: value
+        });
+      }
     }
   };
   
@@ -59,7 +75,7 @@ const FarmDetailsContainer = ({ farm, onUpdate, onIssueTokens }: FarmDetailsCont
   
   return (
     <div className="space-y-6">
-      <Card className="bg-earth-900/40 backdrop-blur-sm border-earth-800">
+      <Card className="bg-clay-900/40 backdrop-blur-sm border-clay-800">
         <CardHeader>
           <FarmHeader 
             farm={farm}
@@ -73,10 +89,10 @@ const FarmDetailsContainer = ({ farm, onUpdate, onIssueTokens }: FarmDetailsCont
         
         <CardContent>
           <Tabs defaultValue="overview">
-            <TabsList className="bg-earth-800/50 p-1">
-              <TabsTrigger value="overview" className="data-[state=active]:bg-cardano-500 data-[state=active]:text-white">Overview</TabsTrigger>
-              <TabsTrigger value="tokens" className="data-[state=active]:bg-cardano-500 data-[state=active]:text-white">Token Management</TabsTrigger>
-              <TabsTrigger value="performance" className="data-[state=active]:bg-cardano-500 data-[state=active]:text-white">Performance</TabsTrigger>
+            <TabsList className="bg-clay-800/50 p-1">
+              <TabsTrigger value="overview" className="data-[state=active]:bg-teal-500 data-[state=active]:text-white">Overview</TabsTrigger>
+              <TabsTrigger value="tokens" className="data-[state=active]:bg-teal-500 data-[state=active]:text-white">Token Management</TabsTrigger>
+              <TabsTrigger value="performance" className="data-[state=active]:bg-teal-500 data-[state=active]:text-white">Performance</TabsTrigger>
             </TabsList>
             
             <TabsContent value="overview" className="mt-6">

@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -15,7 +14,6 @@ const Index = () => {
   const [showCalculator, setShowCalculator] = useState(false);
   const calculatorRef = useRef<HTMLDivElement>(null);
 
-  // Smooth scrolling to calculator
   const scrollToCalculator = () => {
     setShowCalculator(true);
     setTimeout(() => {
@@ -44,13 +42,12 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-earth-900 text-vanilla-100 overflow-x-hidden">
+    <div className="min-h-screen bg-clay-900 text-vanilla-100 overflow-x-hidden">
       <Navbar />
       <TribalBackground />
       <HeroSection />
 
-      {/* Investment Calculator Section */}
-      <section id="calculator" className="section bg-earth-950/70 relative overflow-hidden">
+      <section id="calculator" className="section bg-clay-950/70 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="absolute inset-0 opacity-10">
           <img 
@@ -67,7 +64,7 @@ const Index = () => {
             </p>
             <Button 
               onClick={scrollToCalculator}
-              className="bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950 mt-4 animate-pulse-glow"
+              className="bg-vanilla-500 hover:bg-vanilla-600 text-clay-900 hover:text-clay-950 mt-4 animate-pulse-glow"
             >
               Calculate Your Returns <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -75,7 +72,7 @@ const Index = () => {
           
           <div ref={calculatorRef} className="mb-12">
             <InvestmentCalculator 
-              initialTokenPrice={30} 
+              initialTokenPrice={20} 
               className="hover:shadow-xl hover:shadow-vanilla-500/10 transition-all duration-500"
             />
           </div>
@@ -98,8 +95,8 @@ const Index = () => {
                 icon: <Wallet className="h-6 w-6 text-vanilla-500" />
               }
             ].map((feature, idx) => (
-              <div key={idx} className="bg-earth-800/60 border border-earth-700 rounded-xl p-6 hover-scale pulse-glow">
-                <div className="bg-earth-700/50 rounded-full p-3 inline-block mb-4">
+              <div key={idx} className="bg-clay-800/60 border border-clay-700 rounded-xl p-6 hover-scale pulse-glow">
+                <div className="bg-clay-700/50 rounded-full p-3 inline-block mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-display mb-2 text-vanilla-100">{feature.title}</h3>
@@ -110,8 +107,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Vision Section */}
-      <section id="vision" className="section bg-earth-950/80 relative overflow-hidden">
+      <section id="vision" className="section bg-clay-950/80 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="absolute inset-0 opacity-10">
           <img 
@@ -124,7 +120,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="section-title reveal-on-scroll">Our Vision</h2>
             <p className="section-subtitle text-vanilla-300 reveal-on-scroll">
-              Vanilla Valley is reimagining how agricultural assets are owned, traded, and valued in the digital age, creating a more transparent and profitable ecosystem for farmers, investors, and consumers.
+              New Cambium is a financially sustainable residential and rental community, aligned with the naturist philosophy of living in harmony with nature, each other, and ourselves. This evolving vision guides our operations and business decisions to create a regenerative, sustainable future.
             </p>
           </div>
 
@@ -163,10 +159,10 @@ const Index = () => {
             ].map((feature, index) => (
               <div 
                 key={index}
-                className="bg-earth-800/50 border border-earth-700 rounded-xl p-6 hover-scale reveal-on-scroll"
+                className="bg-clay-800/50 border border-clay-700 rounded-xl p-6 hover-scale reveal-on-scroll"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="bg-earth-700/60 rounded-full p-3 inline-block mb-4 text-vanilla-500">
+                <div className="bg-clay-700/60 rounded-full p-3 inline-block mb-4 text-vanilla-500">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-display mb-2 text-vanilla-100">{feature.title}</h3>
@@ -175,24 +171,24 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="mt-16 pt-8 border-t border-earth-700">
+          <div className="mt-16 pt-8 border-t border-clay-700">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="order-2 lg:order-1 reveal-on-scroll">
                 <h3 className="text-2xl font-display mb-4">Real Assets, Digital Innovation</h3>
                 <p className="text-vanilla-200 mb-6">
-                  Vanilla Valley bridges the gap between traditional agriculture and blockchain technology. By tokenizing vanilla farms, we create a new asset class that combines the stability of real-world agriculture with the liquidity and accessibility of digital assets.
+                  New Cambium bridges the gap between traditional agriculture and blockchain technology. By tokenizing vanilla farms, we create a new asset class that combines the stability of real-world agriculture with the liquidity and accessibility of digital assets.
                 </p>
                 <p className="text-vanilla-200 mb-6">
                   Our model ensures farmers receive fair compensation while investors gain exposure to an uncorrelated asset class with attractive yields. The transparency of blockchain technology creates trust in a market historically plagued by opacity and intermediaries.
                 </p>
-                <Button className="bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 hover:text-earth-950">
+                <Button className="bg-vanilla-500 hover:bg-vanilla-600 text-clay-900 hover:text-clay-950">
                   Learn More <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
               <div className="order-1 lg:order-2 reveal-on-scroll">
                 <div className="relative">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-vanilla-300 to-vanilla-500 rounded-2xl blur opacity-30 animate-pulse-glow"></div>
-                  <div className="glass-card rounded-2xl overflow-hidden">
+                  <div className="glass-card rounded-2xl overflow-hidden border-earth-700/80 bg-clay-900/80">
                     <img 
                       src="/lovable-uploads/2a5b8996-11d1-484d-b087-986d9bb64e43.png" 
                       alt="Vanilla flower" 
@@ -202,28 +198,28 @@ const Index = () => {
                     <div className="p-6">
                       <div className="flex justify-between items-center mb-4">
                         <div>
-                          <span className="pill">Madagascar Region</span>
+                          <span className="pill bg-earth-800 text-vanilla-300 hover:bg-earth-700">Dominican Republic</span>
                         </div>
                         <span className="text-sm font-medium text-vanilla-300">Farm #0281</span>
                       </div>
-                      <h3 className="text-xl font-display mb-2">Premium Bourbon Vanilla Farm</h3>
-                      <p className="text-vanilla-200 mb-4">5 hectares of certified organic vanilla cultivation with established vines and consistent production history.</p>
+                      <h3 className="text-xl font-display mb-2">New Cambium Project</h3>
+                      <p className="text-vanilla-200 mb-4">20 hectares of community development with sustainable farming and residential areas.</p>
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
                           <span className="text-vanilla-300">Annual Yield</span>
-                          <p className="font-medium text-vanilla-100">11.2%</p>
+                          <p className="font-medium text-vanilla-100">12%</p>
                         </div>
                         <div>
-                          <span className="text-vanilla-300">Harvest Cycle</span>
-                          <p className="font-medium text-vanilla-100">9 months</p>
+                          <span className="text-vanilla-300">Token Supply</span>
+                          <p className="font-medium text-vanilla-100">20,000</p>
                         </div>
                         <div>
                           <span className="text-vanilla-300">Token Price</span>
-                          <p className="font-medium text-vanilla-100">$175 USDC</p>
+                          <p className="font-medium text-vanilla-100">$20 USDC</p>
                         </div>
                         <div>
                           <span className="text-vanilla-300">Available Supply</span>
-                          <p className="font-medium text-vanilla-100">1,280 / 2,000</p>
+                          <p className="font-medium text-vanilla-100">15,000 / 20,000</p>
                         </div>
                       </div>
                     </div>
@@ -235,8 +231,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Tokenomics Section */}
-      <section id="tokenomics" className="section bg-earth-900 relative overflow-hidden">
+      <section id="tokenomics" className="section bg-clay-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="container-padding relative z-10">
           <div className="text-center mb-16">
@@ -249,7 +244,7 @@ const Index = () => {
           <TokenomicsChart />
 
           <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 reveal-on-scroll">
-            <div className="bg-earth-800/60 border border-earth-700 rounded-xl p-8">
+            <div className="bg-clay-800/60 border border-clay-700 rounded-xl p-8">
               <h3 className="text-2xl font-display mb-4">Token Utility</h3>
               <ul className="space-y-4">
                 {[
@@ -260,7 +255,7 @@ const Index = () => {
                   "Priority allocation in new farm tokenization events"
                 ].map((item, index) => (
                   <li key={index} className="flex items-start animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
-                    <div className="bg-earth-700/60 rounded-full p-1 mr-3 mt-1">
+                    <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
                       <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
                     </div>
                     <span className="text-vanilla-200">{item}</span>
@@ -268,7 +263,7 @@ const Index = () => {
                 ))}
               </ul>
             </div>
-            <div className="bg-earth-800/60 border border-earth-700 rounded-xl p-8">
+            <div className="bg-clay-800/60 border border-clay-700 rounded-xl p-8">
               <h3 className="text-2xl font-display mb-4">Staking Mechanism</h3>
               <p className="text-vanilla-200 mb-6">
                 Stake your $VNLA tokens to earn rewards from multiple sources:
@@ -280,7 +275,7 @@ const Index = () => {
                   { title: "Liquidity Provision Bonus", value: "1-3% APY" },
                   { title: "Governance Participation", value: "0.5% APY" }
                 ].map((item, index) => (
-                  <div key={index} className="flex justify-between pb-3 border-b border-earth-700 hover:border-vanilla-500 transition-colors duration-300">
+                  <div key={index} className="flex justify-between pb-3 border-b border-clay-700 hover:border-vanilla-500 transition-colors duration-300">
                     <span className="font-medium text-vanilla-100">{item.title}</span>
                     <span className="text-vanilla-500">{item.value}</span>
                   </div>
@@ -291,8 +286,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Roadmap Section */}
-      <section id="roadmap" className="section bg-earth-950/80 relative overflow-hidden">
+      <section id="roadmap" className="section bg-clay-950/80 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="container-padding relative z-10">
           <div className="text-center mb-16">
@@ -306,8 +300,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section id="team" className="section bg-earth-900 relative overflow-hidden">
+      <section id="team" className="section bg-clay-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="container-padding relative z-10">
           <div className="text-center mb-16">
@@ -362,7 +355,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Join Section */}
       <section id="join" className="section bg-gradient-to-b from-earth-950 to-earth-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="container-padding relative z-10 text-center">
@@ -398,7 +390,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-earth-950 text-vanilla-100 py-12">
         <div className="container-padding">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">

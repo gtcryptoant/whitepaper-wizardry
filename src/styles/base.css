@@ -7,79 +7,79 @@
 
 @layer base {
   :root {
-    --background: 30 10% 12%;
-    --foreground: 40 20% 92%;
+    --background: 5 41% 30%; /* Red Clay background */
+    --foreground: 45 60% 86%; /* Vanilla Cream text */
 
-    --card: 30 10% 15%;
-    --card-foreground: 40 20% 92%;
+    --card: 5 41% 35%;
+    --card-foreground: 45 60% 86%;
 
-    --popover: 30 10% 15%;
-    --popover-foreground: 40 20% 92%;
+    --popover: 5 41% 35%;
+    --popover-foreground: 45 60% 86%;
 
-    --primary: 40 100% 65%;
-    --primary-foreground: 30 20% 15%;
+    --primary: 42 55% 59%; /* Golden Ochre */
+    --primary-foreground: 0 0% 15%;
 
-    --secondary: 30 20% 35%;
-    --secondary-foreground: 40 20% 92%;
+    --secondary: 156 27% 35%; /* Deep Forest Green */
+    --secondary-foreground: 45 60% 86%;
 
-    --muted: 30 10% 20%;
-    --muted-foreground: 30 10% 60%;
+    --muted: 5 41% 25%;
+    --muted-foreground: 5 41% 60%;
 
-    --accent: 40 10% 25%;
-    --accent-foreground: 40 20% 92%;
+    --accent: 176 33% 49%; /* Sky Teal */
+    --accent-foreground: 0 0% 15%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 90%;
 
-    --border: 30 10% 25%;
-    --input: 30 10% 25%;
-    --ring: 40 70% 45%;
+    --border: 5 41% 30%;
+    --input: 5 41% 30%;
+    --ring: 42 55% 59%;
     
     /* Tribal Theme Colors - Dark Mode */
-    --tribal-green: #2c7a2e;
-    --tribal-bright-green: #4caf50;
-    --tribal-yellow: #ffa000;
-    --tribal-bright-yellow: #ffd600;
-    --tribal-terracotta: #bf360c;
-    --tribal-color: #ffd600;
+    --tribal-green: #2E5E4E; /* Deep Forest Green */
+    --tribal-bright-green: #55A8A2; /* Sky Teal */
+    --tribal-yellow: #D4A857; /* Golden Ochre */
+    --tribal-bright-yellow: #F7E8C0; /* Vanilla Cream */
+    --tribal-terracotta: #B44D3C; /* Red Clay */
+    --tribal-color: #D4A857; /* Golden Ochre for glowing effects */
   }
 
   .light {
-    --background: 45 33% 98%;
-    --foreground: 30 10% 15%;
+    --background: 45 60% 98%;
+    --foreground: 0 0% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 30 10% 15%;
+    --card-foreground: 0 0% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 30 10% 15%;
+    --popover-foreground: 0 0% 15%;
 
-    --primary: 40 100% 71%;
-    --primary-foreground: 30 20% 15%;
+    --primary: 42 55% 59%; /* Golden Ochre */
+    --primary-foreground: 0 0% 15%;
 
-    --secondary: 30 20% 40%;
-    --secondary-foreground: 45 33% 98%;
+    --secondary: 156 27% 35%; /* Deep Forest Green */
+    --secondary-foreground: 45 60% 98%;
 
-    --muted: 40 20% 92%;
-    --muted-foreground: 30 10% 40%;
+    --muted: 45 60% 92%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 40 50% 88%;
-    --accent-foreground: 30 20% 15%;
+    --accent: 176 33% 49%; /* Sky Teal */
+    --accent-foreground: 0 0% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 15% 85%;
-    --input: 30 15% 85%;
-    --ring: 30 70% 60%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 42 55% 59%;
     
-    /* Tribal Theme Colors */
-    --tribal-green: #4CAF50;
-    --tribal-bright-green: #76FF03;
-    --tribal-yellow: #FFD36B;
-    --tribal-bright-yellow: #FFFF00;
-    --tribal-terracotta: #E57373;
-    --tribal-color: #FFD36B;
+    /* Tribal Theme Colors - Light Mode */
+    --tribal-green: #2E5E4E; /* Deep Forest Green */
+    --tribal-bright-green: #55A8A2; /* Sky Teal */
+    --tribal-yellow: #D4A857; /* Golden Ochre */
+    --tribal-bright-yellow: #F7E8C0; /* Vanilla Cream */
+    --tribal-terracotta: #B44D3C; /* Red Clay */
+    --tribal-color: #D4A857; /* Golden Ochre for glowing effects */
   }
 }
 
@@ -93,7 +93,7 @@
   }
 
   body {
-    @apply bg-earth-900 text-vanilla-100 font-sans;
+    @apply bg-clay-900 text-vanilla-100 font-sans;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -110,7 +110,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-earth-700 rounded-full;
+    @apply bg-clay-700 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {

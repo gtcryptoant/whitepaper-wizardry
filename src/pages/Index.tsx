@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -190,7 +189,7 @@ const Index = () => {
                 <div className="relative">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-vanilla-300 to-vanilla-500 rounded-2xl blur opacity-30 animate-pulse-glow"></div>
                   <div className="glass-card rounded-2xl overflow-hidden border-earth-700/80 bg-clay-900/80">
-                    <a href="https://newcambium.org" target="_blank" rel="noopener noreferrer" className="block">
+                    <a href="https://www.newcambium.com/" target="_blank" rel="noopener noreferrer" className="block">
                       <img 
                         src="/lovable-uploads/de0f5708-0026-430b-a01d-665fffb77ff6.png" 
                         alt="New Cambium" 
@@ -256,22 +255,73 @@ const Index = () => {
           <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 reveal-on-scroll">
             <div className="bg-clay-800/60 border border-clay-700 rounded-xl p-8">
               <h3 className="text-2xl font-display mb-4">Token Utility</h3>
-              <ul className="space-y-4">
-                {[
-                  "Governance voting rights in the Vanilla Valley DAO",
-                  "Access to exclusive farm investment opportunities",
-                  "Staking rewards from protocol fees and farm yields",
-                  "Discounted fees on the marketplace platform",
-                  "Priority allocation in new farm tokenization events"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
+              <div className="space-y-4">
+                <p className="text-vanilla-200">
+                  <span className="font-medium text-vanilla-100">Function of the Native Token: Vanilla Valley Token (VVT)</span><br />
+                  The Vanilla Valley Token (VVT) is the native utility token of the Vanilla Valley Project, with the following primary functions:
+                </p>
+                
+                <div className="space-y-4 mt-4">
+                  <div className="flex items-start">
                     <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
                       <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
                     </div>
-                    <span className="text-vanilla-200">{item}</span>
-                  </li>
-                ))}
-              </ul>
+                    <div>
+                      <span className="font-medium text-vanilla-100">Ownership Representation:</span>
+                      <p className="text-vanilla-200">Each VVT represents tokenized ownership of a vanilla orchid, linking holders to a tangible agricultural asset, covering:</p>
+                      <ul className="list-disc list-inside ml-4 text-vanilla-200">
+                        <li>Land costs</li>
+                        <li>Cultivation and care of vanilla orchids</li>
+                        <li>Administration and processing fees</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
+                      <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
+                    </div>
+                    <div>
+                      <span className="font-medium text-vanilla-100">Dividend Distribution:</span>
+                      <p className="text-vanilla-200">VVT holders earn a share of the profits from vanilla harvest sales.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
+                      <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
+                    </div>
+                    <div>
+                      <span className="font-medium text-vanilla-100">Farm Growth:</span>
+                      <p className="text-vanilla-200">Each farm starts at 1,000 plants per hectare, increasing to a maximum of 2,500 per hectare as plants reach harvest stage.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
+                      <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
+                    </div>
+                    <div>
+                      <span className="font-medium text-vanilla-100">Liquidity and Tradability:</span>
+                      <p className="text-vanilla-200">VVT can be bought, sold, or traded directly on Cardano Marketplaces, allowing investors flexibility in managing their assets.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
+                      <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
+                    </div>
+                    <div>
+                      <span className="font-medium text-vanilla-100">Sustainability Support:</span>
+                      <p className="text-vanilla-200">By holding VVT, investors contribute to reforestation and sustainable farming practices embedded in the project's operations.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="text-vanilla-200 mt-4 italic">
+                  In essence, VVT serves as a financial, operational, and sustainability-driven cornerstone of the Vanilla Valley ecosystem.
+                </p>
+              </div>
             </div>
             <div className="bg-clay-800/60 border border-clay-700 rounded-xl p-8">
               <h3 className="text-2xl font-display mb-4">Staking Mechanism</h3>

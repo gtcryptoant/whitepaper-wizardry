@@ -265,3 +265,12 @@
 .horizontal-scroll > * {
   @apply snap-start flex-shrink-0;
 }
+
+#vision, #calculator, #join {
+  background-color: rgba(180, 77, 60, 0.3); /* More transparent red clay */
+}
+
+#tokenomics, #team {
+  background-color: var(--tribal-terracotta);
+  opacity: 0.9; /* Slightly more transparent */
+}

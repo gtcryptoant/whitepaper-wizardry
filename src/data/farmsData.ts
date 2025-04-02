@@ -1,8 +1,7 @@
 
 import { Farm } from '@/types/farm';
 
-// This is temporary data storage. In a production app, this would be fetched from Supabase
-export const initialFarms: Farm[] = [
+export const farmsData: Farm[] = [
   {
     id: "1",
     name: "Vanilla Valley Farm 1",
@@ -28,8 +27,8 @@ export const initialFarms: Farm[] = [
       lastHarvest: "2024-03-01",
       nextHarvest: "2024-06-01"
     },
-    description: "A beautiful vanilla farm in the heart of the Dominican Republic, focusing on sustainable farming practices and producing high-quality vanilla beans. Our team of local farmers uses traditional methods combined with modern technology to ensure the best yield while preserving the environment.",
-    vision: "To create a sustainable and profitable vanilla farm that benefits the local community while providing investors with stable returns."
+    description: "A beautiful vanilla farm in the heart of the Dominican Republic.",
+    vision: "To create a sustainable and profitable vanilla farm that benefits the local community."
   },
   {
     id: "2",
@@ -56,8 +55,8 @@ export const initialFarms: Farm[] = [
       lastHarvest: "2024-02-15",
       nextHarvest: "2024-05-15"
     },
-    description: "Located in Madagascar, one of the world's premier vanilla-growing regions, this farm produces some of the highest quality vanilla beans available. We work closely with local communities to ensure sustainable farming practices while maximizing yield and quality.",
-    vision: "To be a leading vanilla producer in Madagascar, using sustainable farming practices that protect the environment and support local communities."
+    description: "A sustainable vanilla farm in Madagascar, known for its high-quality beans.",
+    vision: "To be a leading vanilla producer in Madagascar, using sustainable farming practices."
   },
   {
     id: "3",
@@ -84,7 +83,7 @@ export const initialFarms: Farm[] = [
       lastHarvest: "2024-02-28",
       nextHarvest: "2024-05-28"
     },
-    description: "Our Indonesian farm is nestled in the perfect climate for growing premium vanilla. We've implemented innovative farming techniques that help us achieve excellent yields while maintaining the highest quality standards. Our partnership with local farmers creates sustainable livelihoods and ensures traditional knowledge is preserved.",
-    vision: "To create a model vanilla farm that demonstrates how sustainable agriculture can generate strong returns for both investors and local communities."
+    description: "An innovative vanilla farm in Indonesia, focused on community development.",
+    vision: "To empower local farmers in Indonesia through sustainable vanilla farming."
   }
 ];

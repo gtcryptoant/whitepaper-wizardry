@@ -1,105 +1,22 @@
+
 import React, { useState } from 'react';
 import AdminLayout from '@/components/AdminLayout';
 import ProjectStatsOverview from '@/components/admin/project/ProjectStatsOverview';
 import FarmDetails from '@/components/admin/FarmDetails';
 import NewFarmForm from '@/components/admin/farm/NewFarmForm';
 import NewPartnerForm from '@/components/admin/partner/NewPartnerForm';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import { Farm } from '@/types/farm';
 import { Partner } from '@/types/partner';
+import OverviewActions from '@/components/admin/project/OverviewActions';
+import FarmsList from '@/components/admin/project/FarmsList';
+import PartnersList from '@/components/admin/project/PartnersList';
+import ProjectParameters from '@/components/admin/project/ProjectParameters';
+import ContentManagement from '@/components/admin/project/ContentManagement';
+import { farmsData } from '@/data/farmsData';
 
 const ProjectAdmin = () => {
-  const [farms, setFarms] = useState<Farm[]>([
-    {
-      id: "1",
-      name: "Vanilla Valley Farm 1",
-      location: "Dominican Republic",
-      hectares: 20,
-      establishedDate: "2023-01-15",
-      performance: {
-        yield: 12,
-        quality: 95,
-        sustainability: 90
-      },
-      tokens: {
-        symbol: "VVT",
-        totalSupply: 20000,
-        circulatingSupply: 15000,
-        price: 20,
-        holders: 125
-      },
-      stats: {
-        monthlyYield: [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1],
-        annualRevenue: 500000,
-        projectedGrowth: 15,
-        lastHarvest: "2024-03-01",
-        nextHarvest: "2024-06-01"
-      },
-      description: "A beautiful vanilla farm in the heart of the Dominican Republic.",
-      vision: "To create a sustainable and profitable vanilla farm that benefits the local community."
-    },
-    {
-      id: "2",
-      name: "Vanilla Valley Farm 2",
-      location: "Madagascar",
-      hectares: 15,
-      establishedDate: "2022-11-20",
-      performance: {
-        yield: 10,
-        quality: 92,
-        sustainability: 88
-      },
-      tokens: {
-        symbol: "VVT",
-        totalSupply: 15000,
-        circulatingSupply: 12000,
-        price: 18,
-        holders: 90
-      },
-      stats: {
-        monthlyYield: [0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2],
-        annualRevenue: 400000,
-        projectedGrowth: 12,
-        lastHarvest: "2024-02-15",
-        nextHarvest: "2024-05-15"
-      },
-      description: "A sustainable vanilla farm in Madagascar, known for its high-quality beans.",
-      vision: "To be a leading vanilla producer in Madagascar, using sustainable farming practices."
-    },
-    {
-      id: "3",
-      name: "Vanilla Valley Farm 3",
-      location: "Indonesia",
-      hectares: 18,
-      establishedDate: "2023-03-10",
-      performance: {
-        yield: 11,
-        quality: 94,
-        sustainability: 89
-      },
-      tokens: {
-        symbol: "VVT",
-        totalSupply: 18000,
-        circulatingSupply: 14000,
-        price: 19,
-        holders: 110
-      },
-      stats: {
-        monthlyYield: [1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1],
-        annualRevenue: 450000,
-        projectedGrowth: 14,
-        lastHarvest: "2024-02-28",
-        nextHarvest: "2024-05-28"
-      },
-      description: "An innovative vanilla farm in Indonesia, focused on community development.",
-      vision: "To empower local farmers in Indonesia through sustainable vanilla farming."
-    }
-  ]);
+  const [farms, setFarms] = useState<Farm[]>(farmsData);
   const [partners, setPartners] = useState<Partner[]>([
     {
       id: "1",
@@ -177,25 +94,7 @@ const ProjectAdmin = () => {
           <TabsContent value="overview" className="pt-6">
             <div className="space-y-8">
               <ProjectStatsOverview stats={projectStats} />
-              
-              <Card className="bg-earth-800/60 border-earth-700">
-                <CardHeader>
-                  <CardTitle className="text-vanilla-100">Project Actions</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <Button className="bg-earth-700 hover:bg-earth-600 text-vanilla-100">
-                      Run Yield Distribution
-                    </Button>
-                    <Button className="bg-earth-700 hover:bg-earth-600 text-vanilla-100">
-                      Publish Market Update
-                    </Button>
-                    <Button className="bg-earth-700 hover:bg-earth-600 text-vanilla-100">
-                      Preview Website
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+              <OverviewActions />
             </div>
           </TabsContent>
           
@@ -203,30 +102,7 @@ const ProjectAdmin = () => {
             <div className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <NewFarmForm onSubmit={handleCreateFarm} />
-                
-                <Card className="bg-earth-800/60 border-earth-700">
-                  <CardHeader>
-                    <CardTitle className="text-vanilla-100">Current Farms</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {farms.map((farm) => (
-                        <div key={farm.id} className="flex items-center justify-between p-3 bg-earth-700/50 rounded-lg">
-                          <div className="flex items-center space-x-3">
-                            <div className="h-10 w-10 rounded-full bg-earth-600 flex items-center justify-center text-vanilla-100">
-                              {farm.name.charAt(0)}
-                            </div>
-                            <div>
-                              <div className="font-medium text-vanilla-100">{farm.name}</div>
-                              <div className="text-sm text-vanilla-300">{farm.location}</div>
-                            </div>
-                          </div>
-                          <Button variant="ghost" size="sm" className="text-vanilla-300 hover:text-vanilla-100" onClick={() => setSelectedFarmId(farm.id)}>View</Button>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                <FarmsList farms={farms} onSelectFarm={setSelectedFarmId} />
               </div>
               
               {selectedFarmId && (
@@ -240,147 +116,20 @@ const ProjectAdmin = () => {
           </TabsContent>
           
           <TabsContent value="parameters" className="pt-6">
-            <Card className="bg-earth-800/60 border-earth-700">
-              <CardHeader>
-                <CardTitle className="text-vanilla-100">Project Parameters</CardTitle>
-                <CardDescription className="text-vanilla-300">
-                  Adjust key parameters for the project
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="yieldThreshold" className="text-vanilla-200">Yield Threshold</Label>
-                    <Input 
-                      id="yieldThreshold" 
-                      type="number" 
-                      defaultValue="10"
-                      className="bg-earth-700 text-vanilla-100 border-earth-600"
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="sustainabilityTarget" className="text-vanilla-200">Sustainability Target</Label>
-                    <Input 
-                      id="sustainabilityTarget" 
-                      type="number" 
-                      defaultValue="90"
-                      className="bg-earth-700 text-vanilla-100 border-earth-600"
-                    />
-                  </div>
-                  
-                  <Button className="bg-vanilla-500 hover:bg-vanilla-600 text-earth-900">
-                    Save Parameters
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            <ProjectParameters />
           </TabsContent>
           
           <TabsContent value="partners" className="pt-6">
             <div className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <NewPartnerForm onSubmit={(partner) => handleCreatePartner(partner)} />
-                
-                <Card className="bg-earth-800/60 border-earth-700">
-                  <CardHeader>
-                    <CardTitle className="text-vanilla-100">Current Partners</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {partners.map((partner, index) => (
-                        <div key={index} className="flex items-center justify-between p-3 bg-earth-700/50 rounded-lg">
-                          <div className="flex items-center space-x-3">
-                            <div className="h-10 w-10 rounded-full bg-earth-600 flex items-center justify-center text-vanilla-100">
-                              {partner.name.charAt(0)}
-                            </div>
-                            <div>
-                              <div className="font-medium text-vanilla-100">{partner.name}</div>
-                              <div className="text-sm text-vanilla-300">{partner.type}</div>
-                            </div>
-                          </div>
-                          <Button variant="ghost" size="sm" className="text-vanilla-300 hover:text-vanilla-100">View</Button>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                <PartnersList partners={partners} />
               </div>
             </div>
           </TabsContent>
           
           <TabsContent value="content" className="pt-6">
-            <div className="space-y-8">
-              <Card className="bg-earth-800/60 border-earth-700">
-                <CardHeader>
-                  <CardTitle className="text-vanilla-100">Homepage Content Management</CardTitle>
-                  <CardDescription className="text-vanilla-300">
-                    Edit the content displayed on the main website
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="tokenSymbol" className="text-vanilla-200">Token Symbol</Label>
-                      <Input 
-                        id="tokenSymbol" 
-                        defaultValue="$VVT"
-                        className="bg-earth-700 text-vanilla-100 border-earth-600"
-                      />
-                      <p className="text-sm text-vanilla-400">
-                        This will update the token symbol throughout the site
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="visionStatement" className="text-vanilla-200">Project Vision</Label>
-                      <Textarea 
-                        id="visionStatement" 
-                        rows={6}
-                        defaultValue="New Cambium is a financially sustainable residential and rental community, integrating sustainable farming with thoughtfully designed living spaces. This project is focused on living in harmony with our natural world, ensuring that its growth aligns with the stewardship of the land and surrounding nature. Every decision supports a regenerative and sustainable future, fostering a deep connection between people and the environment."
-                        className="bg-earth-700 text-vanilla-100 border-earth-600"
-                      />
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-lg font-medium text-vanilla-100 mb-4">Featured Farm Details</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="farmNumber" className="text-vanilla-200">Farm Number</Label>
-                          <Input 
-                            id="farmNumber" 
-                            defaultValue="1"
-                            className="bg-earth-700 text-vanilla-100 border-earth-600"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="availableSupply" className="text-vanilla-200">Available Supply</Label>
-                          <Input 
-                            id="availableSupply" 
-                            defaultValue="2,000 / 20,000"
-                            className="bg-earth-700 text-vanilla-100 border-earth-600"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="projectWebsite" className="text-vanilla-200">Project Website URL</Label>
-                          <Input 
-                            id="projectWebsite" 
-                            defaultValue="https://newcambium.org"
-                            className="bg-earth-700 text-vanilla-100 border-earth-600"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="pt-4">
-                      <Button className="bg-vanilla-500 hover:bg-vanilla-600 text-earth-900">
-                        Save Content Changes
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            <ContentManagement />
           </TabsContent>
         </Tabs>
       </div>

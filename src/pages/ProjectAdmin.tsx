@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import AdminLayout from '@/components/AdminLayout';
 import ProjectStatsOverview from '@/components/admin/project/ProjectStatsOverview';
 import FarmDetails from '@/components/admin/FarmDetails';
+import PartnerDetails from '@/components/admin/PartnerDetails';
 import NewFarmForm from '@/components/admin/farm/NewFarmForm';
 import NewPartnerForm from '@/components/admin/partner/NewPartnerForm';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -38,10 +39,16 @@ const ProjectAdmin = () => {
     }
   ]);
   const [selectedFarmId, setSelectedFarmId] = useState<string | null>(null);
+  const [selectedPartnerId, setSelectedPartnerId] = useState<string | null>(null);
 
   const handleUpdateFarm = (updatedFarm: Farm) => {
     setFarms(farms.map(farm => farm.id === updatedFarm.id ? updatedFarm : farm));
     setSelectedFarmId(null); // Close the farm details after update
+  };
+
+  const handleUpdatePartner = (updatedPartner: Partner) => {
+    setPartners(partners.map(partner => partner.id === updatedPartner.id ? updatedPartner : partner));
+    setSelectedPartnerId(null); // Close the partner details after update
   };
 
   const handleIssueTokens = (farmId: string, amount: number, recipient: string) => {
@@ -73,8 +80,9 @@ const ProjectAdmin = () => {
     projectValue: farms.reduce((acc, farm) => acc + (farm.tokens.totalSupply * farm.tokens.price), 0)
   };
 
-  const handleCreatePartner = (newPartner: Partner) => {
-    setPartners([...partners, newPartner]);
+  const handleCreatePartner = (newPartner: Omit<Partner, 'id'>) => {
+    const id = Math.random().toString(36).substring(2, 15);
+    setPartners([...partners, { id, ...newPartner } as Partner]);
   };
 
   return (
@@ -122,9 +130,16 @@ const ProjectAdmin = () => {
           <TabsContent value="partners" className="pt-6">
             <div className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <NewPartnerForm onSubmit={(partner) => handleCreatePartner(partner)} />
-                <PartnersList partners={partners} />
+                <NewPartnerForm onSubmit={handleCreatePartner} />
+                <PartnersList partners={partners} onSelectPartner={setSelectedPartnerId} />
               </div>
+              
+              {selectedPartnerId && (
+                <PartnerDetails 
+                  partner={partners.find(partner => partner.id === selectedPartnerId) as Partner}
+                  onUpdate={handleUpdatePartner}
+                />
+              )}
             </div>
           </TabsContent>
           

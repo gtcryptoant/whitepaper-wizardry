@@ -100,3 +100,29 @@
   @apply bg-vanilla-500 hover:bg-vanilla-600 text-earth-900 relative overflow-hidden;
   transition: all 0.3s ease;
 }
+
+@keyframes dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.dot-pulse {
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes border-pulse {
+  0%, 100% {
+    border-color: rgba(212, 168, 87, 0.3);
+  }
+  50% {
+    border-color: rgba(212, 168, 87, 0.8);
+  }
+}
+
+.border-pulse {
+  animation: border-pulse 4s ease-in-out infinite;
+}

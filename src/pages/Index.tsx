@@ -6,9 +6,11 @@ import RoadmapTimeline from '@/components/RoadmapTimeline';
 import TeamCard from '@/components/TeamCard';
 import InvestmentCalculator from '@/components/InvestmentCalculator';
 import TribalBackground from '@/components/TribalBackground';
+import TokenUtilityCard from '@/components/TokenUtilityCard';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BarChart3, Globe, Leaf, TrendingUp, Wallet } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Index = () => {
   const [showCalculator, setShowCalculator] = useState(false);
@@ -107,7 +109,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="vision" className="section bg-clay-950/80 relative overflow-hidden">
+      <section id="vision" className="section bg-clay-950/60 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="absolute inset-0 opacity-10">
           <img 
@@ -119,9 +121,14 @@ const Index = () => {
         <div className="container-padding relative z-10">
           <div className="text-center mb-16">
             <h2 className="section-title reveal-on-scroll">Our Vision</h2>
-            <p className="section-subtitle text-vanilla-300 reveal-on-scroll">
-              New Cambium is a financially sustainable residential and rental community, integrating sustainable farming with thoughtfully designed living spaces. This project is focused on living in harmony with our natural world, ensuring that its growth aligns with the stewardship of the land and surrounding nature. Every decision supports a regenerative and sustainable future, fostering a deep connection between people and the environment.
-            </p>
+            <div className="section-subtitle text-vanilla-300 reveal-on-scroll max-w-4xl">
+              <p className="mb-4">
+                At Vanilla Valley, our <span className="font-bold">mission</span> is to evolve vanilla farming by producing premium-quality vanilla in its native habitat while supporting sustainable practices, fair wages, and thriving ecosystems.
+              </p>
+              <p>
+                Our <span className="font-bold">vision</span> is to create a replicable model that aligns ethical impact with scalable profitability, setting a new benchmark for sustainable agriculture.
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -176,7 +183,7 @@ const Index = () => {
               <div className="order-2 lg:order-1 reveal-on-scroll">
                 <h3 className="text-2xl font-display mb-4">Real Assets, Digital Innovation</h3>
                 <p className="text-vanilla-200 mb-6">
-                  New Cambium bridges the gap between traditional agriculture and blockchain technology. By tokenizing vanilla farms, we create a new asset class that combines the stability of real-world agriculture with the liquidity and accessibility of digital assets.
+                  Vanilla Valley bridges the gap between traditional agriculture and blockchain technology. By tokenizing vanilla farms, we create a new asset class that combines the stability of real-world agriculture with the liquidity and accessibility of digital assets.
                 </p>
                 <p className="text-vanilla-200 mb-6">
                   Our model ensures farmers receive fair compensation while investors gain exposure to an uncorrelated asset class with attractive yields. The transparency of blockchain technology creates trust in a market historically plagued by opacity and intermediaries.
@@ -252,74 +259,13 @@ const Index = () => {
 
           <TokenomicsChart />
 
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-1 gap-10 reveal-on-scroll">
-            <div className="bg-gradient-to-r from-vanilla-800/40 to-vanilla-500/30 backdrop-blur-sm border border-vanilla-500/30 rounded-xl p-8 shadow-lg shadow-vanilla-500/10">
-              <h3 className="text-2xl font-display mb-4 text-vanilla-100">Vanilla Valley Token (VVT) Utility</h3>
-              <p className="text-vanilla-200 mb-6">
-                VVT is the native token of the Vanilla Valley Project, representing tokenized ownership of vanilla orchids. Holders benefit from:
-              </p>
-              
-              <div className="space-y-6 mt-4">
-                <div className="flex items-start">
-                  <div className="bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1">
-                    <div className="w-4 h-4 bg-vanilla-500 rounded-full"></div>
-                  </div>
-                  <div>
-                    <span className="font-medium text-vanilla-100">Asset-Backed Ownership</span>
-                    <p className="text-vanilla-200">Each VVT links to a tangible vanilla orchid, covering land, cultivation, and processing costs.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1">
-                    <div className="w-4 h-4 bg-vanilla-500 rounded-full"></div>
-                  </div>
-                  <div>
-                    <span className="font-medium text-vanilla-100">Profit Sharing</span>
-                    <p className="text-vanilla-200">Earn dividends from vanilla harvest sales.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1">
-                    <div className="w-4 h-4 bg-vanilla-500 rounded-full"></div>
-                  </div>
-                  <div>
-                    <span className="font-medium text-vanilla-100">Farm Expansion</span>
-                    <p className="text-vanilla-200">Supports plant growth from 1,000 to 2,500 per hectare.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1">
-                    <div className="w-4 h-4 bg-vanilla-500 rounded-full"></div>
-                  </div>
-                  <div>
-                    <span className="font-medium text-vanilla-100">Liquidity & Flexibility</span>
-                    <p className="text-vanilla-200">Tradeable on Cardano marketplaces.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1">
-                    <div className="w-4 h-4 bg-vanilla-500 rounded-full"></div>
-                  </div>
-                  <div>
-                    <span className="font-medium text-vanilla-100">Sustainability Impact</span>
-                    <p className="text-vanilla-200">Drives reforestation and eco-friendly farming.</p>
-                  </div>
-                </div>
-              </div>
-              
-              <p className="text-vanilla-100 mt-6 font-medium italic border-t border-vanilla-500/30 pt-4">
-                VVT is the financial and sustainability backbone of the Vanilla Valley ecosystem.
-              </p>
-            </div>
+          <div className="mt-16 reveal-on-scroll">
+            <TokenUtilityCard />
           </div>
         </div>
       </section>
 
-      <section id="roadmap" className="section bg-clay-950/80 relative overflow-hidden">
+      <section id="roadmap" className="section bg-clay-950/60 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise"></div>
         <div className="container-padding relative z-10">
           <div className="text-center mb-16">

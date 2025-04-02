@@ -41,6 +41,10 @@
     --tribal-bright-yellow: #F7E8C0; /* Vanilla Cream */
     --tribal-terracotta: #B44D3C; /* Red Clay */
     --tribal-color: #D4A857; /* Golden Ochre for glowing effects */
+    
+    /* Added vanilla theme colors for token utility section */
+    --vanilla-500: #D4A857;
+    --vanilla-800: #8A6B30;
   }
 
   .light {
@@ -79,6 +83,10 @@
     --tribal-bright-yellow: #F7E8C0; /* Vanilla Cream */
     --tribal-terracotta: #B44D3C; /* Red Clay */
     --tribal-color: #D4A857; /* Golden Ochre for glowing effects */
+    
+    /* Added vanilla theme colors for token utility section */
+    --vanilla-500: #D4A857;
+    --vanilla-800: #8A6B30;
   }
 }
 
@@ -201,6 +209,26 @@
     @apply shadow-md shadow-cardano-900/30;
     @apply hover:shadow-lg hover:shadow-cardano-900/50 transition-shadow;
   }
+  
+  .token-utility-card {
+    @apply bg-gradient-to-r from-vanilla-800/40 to-vanilla-500/30;
+    @apply backdrop-blur-sm border border-vanilla-500/30;
+    @apply rounded-xl p-8 shadow-lg shadow-vanilla-500/10;
+    @apply transition-all duration-300;
+  }
+  
+  .token-utility-card:hover {
+    @apply shadow-xl shadow-vanilla-500/20;
+    @apply border-vanilla-500/50;
+  }
+  
+  .token-utility-bullet {
+    @apply bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1;
+  }
+  
+  .token-utility-bullet-inner {
+    @apply w-4 h-4 bg-vanilla-500 rounded-full;
+  }
 }
 
 @keyframes shimmer {
@@ -267,10 +295,9 @@
 }
 
 #vision, #calculator, #join {
-  background-color: rgba(180, 77, 60, 0.3); /* More transparent red clay */
+  background-color: rgba(180, 77, 60, 0.2); /* More transparent red clay */
 }
 
 #tokenomics, #team {
-  background-color: var(--tribal-terracotta);
-  opacity: 0.9; /* Slightly more transparent */
+  background-color: rgba(180, 77, 60, 0.1); /* Even more transparent */
 }

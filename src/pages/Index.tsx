@@ -252,95 +252,68 @@ const Index = () => {
 
           <TokenomicsChart />
 
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 reveal-on-scroll">
-            <div className="bg-clay-800/60 border border-clay-700 rounded-xl p-8">
-              <h3 className="text-2xl font-display mb-4">Token Utility</h3>
-              <div className="space-y-4">
-                <p className="text-vanilla-200">
-                  <span className="font-medium text-vanilla-100">Function of the Native Token: Vanilla Valley Token (VVT)</span><br />
-                  The Vanilla Valley Token (VVT) is the native utility token of the Vanilla Valley Project, with the following primary functions:
-                </p>
-                
-                <div className="space-y-4 mt-4">
-                  <div className="flex items-start">
-                    <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
-                      <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
-                    </div>
-                    <div>
-                      <span className="font-medium text-vanilla-100">Ownership Representation:</span>
-                      <p className="text-vanilla-200">Each VVT represents tokenized ownership of a vanilla orchid, linking holders to a tangible agricultural asset, covering:</p>
-                      <ul className="list-disc list-inside ml-4 text-vanilla-200">
-                        <li>Land costs</li>
-                        <li>Cultivation and care of vanilla orchids</li>
-                        <li>Administration and processing fees</li>
-                      </ul>
-                    </div>
+          <div className="mt-20 grid grid-cols-1 md:grid-cols-1 gap-10 reveal-on-scroll">
+            <div className="bg-gradient-to-r from-vanilla-800/40 to-vanilla-500/30 backdrop-blur-sm border border-vanilla-500/30 rounded-xl p-8 shadow-lg shadow-vanilla-500/10">
+              <h3 className="text-2xl font-display mb-4 text-vanilla-100">Vanilla Valley Token (VVT) Utility</h3>
+              <p className="text-vanilla-200 mb-6">
+                VVT is the native token of the Vanilla Valley Project, representing tokenized ownership of vanilla orchids. Holders benefit from:
+              </p>
+              
+              <div className="space-y-6 mt-4">
+                <div className="flex items-start">
+                  <div className="bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1">
+                    <div className="w-4 h-4 bg-vanilla-500 rounded-full"></div>
                   </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
-                      <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
-                    </div>
-                    <div>
-                      <span className="font-medium text-vanilla-100">Dividend Distribution:</span>
-                      <p className="text-vanilla-200">VVT holders earn a share of the profits from vanilla harvest sales.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
-                      <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
-                    </div>
-                    <div>
-                      <span className="font-medium text-vanilla-100">Farm Growth:</span>
-                      <p className="text-vanilla-200">Each farm starts at 1,000 plants per hectare, increasing to a maximum of 2,500 per hectare as plants reach harvest stage.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
-                      <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
-                    </div>
-                    <div>
-                      <span className="font-medium text-vanilla-100">Liquidity and Tradability:</span>
-                      <p className="text-vanilla-200">VVT can be bought, sold, or traded directly on Cardano Marketplaces, allowing investors flexibility in managing their assets.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-clay-700/60 rounded-full p-1 mr-3 mt-1">
-                      <div className="w-3 h-3 bg-vanilla-500 rounded-full"></div>
-                    </div>
-                    <div>
-                      <span className="font-medium text-vanilla-100">Sustainability Support:</span>
-                      <p className="text-vanilla-200">By holding VVT, investors contribute to reforestation and sustainable farming practices embedded in the project's operations.</p>
-                    </div>
+                  <div>
+                    <span className="font-medium text-vanilla-100">Asset-Backed Ownership</span>
+                    <p className="text-vanilla-200">Each VVT links to a tangible vanilla orchid, covering land, cultivation, and processing costs.</p>
                   </div>
                 </div>
                 
-                <p className="text-vanilla-200 mt-4 italic">
-                  In essence, VVT serves as a financial, operational, and sustainability-driven cornerstone of the Vanilla Valley ecosystem.
-                </p>
-              </div>
-            </div>
-            <div className="bg-clay-800/60 border border-clay-700 rounded-xl p-8">
-              <h3 className="text-2xl font-display mb-4">Staking Mechanism</h3>
-              <p className="text-vanilla-200 mb-6">
-                Stake your $VVT tokens to earn rewards from multiple sources:
-              </p>
-              <div className="space-y-4">
-                {[
-                  { title: "Protocol Fees", value: "2.5% APY" },
-                  { title: "Farm Yield Distribution", value: "5-9% APY" },
-                  { title: "Liquidity Provision Bonus", value: "1-3% APY" },
-                  { title: "Governance Participation", value: "0.5% APY" }
-                ].map((item, index) => (
-                  <div key={index} className="flex justify-between pb-3 border-b border-clay-700 hover:border-vanilla-500 transition-colors duration-300">
-                    <span className="font-medium text-vanilla-100">{item.title}</span>
-                    <span className="text-vanilla-500">{item.value}</span>
+                <div className="flex items-start">
+                  <div className="bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1">
+                    <div className="w-4 h-4 bg-vanilla-500 rounded-full"></div>
                   </div>
-                ))}
+                  <div>
+                    <span className="font-medium text-vanilla-100">Profit Sharing</span>
+                    <p className="text-vanilla-200">Earn dividends from vanilla harvest sales.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1">
+                    <div className="w-4 h-4 bg-vanilla-500 rounded-full"></div>
+                  </div>
+                  <div>
+                    <span className="font-medium text-vanilla-100">Farm Expansion</span>
+                    <p className="text-vanilla-200">Supports plant growth from 1,000 to 2,500 per hectare.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1">
+                    <div className="w-4 h-4 bg-vanilla-500 rounded-full"></div>
+                  </div>
+                  <div>
+                    <span className="font-medium text-vanilla-100">Liquidity & Flexibility</span>
+                    <p className="text-vanilla-200">Tradeable on Cardano marketplaces.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="bg-vanilla-500/20 rounded-full p-1.5 mr-3 mt-1">
+                    <div className="w-4 h-4 bg-vanilla-500 rounded-full"></div>
+                  </div>
+                  <div>
+                    <span className="font-medium text-vanilla-100">Sustainability Impact</span>
+                    <p className="text-vanilla-200">Drives reforestation and eco-friendly farming.</p>
+                  </div>
+                </div>
               </div>
+              
+              <p className="text-vanilla-100 mt-6 font-medium italic border-t border-vanilla-500/30 pt-4">
+                VVT is the financial and sustainability backbone of the Vanilla Valley ecosystem.
+              </p>
             </div>
           </div>
         </div>

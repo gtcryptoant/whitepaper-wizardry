@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Farm as FarmIcon } from 'lucide-react';
 import ConnectWallet from './ConnectWallet';
 
 const Navbar = () => {
@@ -48,6 +48,9 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-1">
             <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
               Home
+            </Link>
+            <Link to="/farms" className={`nav-link ${isActive('/farms') ? 'active' : ''}`}>
+              Farms
             </Link>
             <Link to="/dashboard" className={`nav-link ${isActive('/dashboard') ? 'active' : ''}`}>
               Dashboard
@@ -100,6 +103,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Home
+            </Link>
+            <Link 
+              to="/farms" 
+              className={`text-vanilla-300 hover:text-vanilla-100 px-2 py-1 ${isActive('/farms') ? 'text-vanilla-100 font-medium' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Farms
             </Link>
             <Link 
               to="/dashboard" 

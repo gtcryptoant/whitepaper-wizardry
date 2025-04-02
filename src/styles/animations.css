@@ -126,3 +126,16 @@
 .border-pulse {
   animation: border-pulse 4s ease-in-out infinite;
 }
+
+@keyframes tribal-pattern-fade {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.tribal-pattern-fade {
+  animation: tribal-pattern-fade 8s ease-in-out infinite;
+}

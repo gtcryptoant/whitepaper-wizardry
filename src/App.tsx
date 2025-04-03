@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
 import ProjectAdmin from "./pages/ProjectAdmin";
 import Farms from "./pages/Farms";
+import WhitePaper from "./pages/WhitePaper";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/admin" element={<Admin />} />
           <Route path="/project-admin" element={<ProjectAdmin />} />
           <Route path="/farms" element={<Farms />} />
+          <Route path="/whitepaper" element={<WhitePaper />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown, Farm as FarmIcon } from 'lucide-react';
+import { Menu, X, ChevronDown, FileText } from 'lucide-react';
 import ConnectWallet from './ConnectWallet';
 
 const Navbar = () => {
@@ -51,6 +51,12 @@ const Navbar = () => {
             </Link>
             <Link to="/farms" className={`nav-link ${isActive('/farms') ? 'active' : ''}`}>
               Farms
+            </Link>
+            <Link to="/whitepaper" className={`nav-link ${isActive('/whitepaper') ? 'active' : ''}`}>
+              <span className="flex items-center">
+                <FileText className="mr-1 h-4 w-4" />
+                Whitepaper
+              </span>
             </Link>
             <Link to="/dashboard" className={`nav-link ${isActive('/dashboard') ? 'active' : ''}`}>
               Dashboard
@@ -110,6 +116,14 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Farms
+            </Link>
+            <Link 
+              to="/whitepaper" 
+              className={`text-vanilla-300 hover:text-vanilla-100 px-2 py-1 flex items-center ${isActive('/whitepaper') ? 'text-vanilla-100 font-medium' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              <FileText className="mr-1 h-4 w-4" />
+              Whitepaper
             </Link>
             <Link 
               to="/dashboard" 

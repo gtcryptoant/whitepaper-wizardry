@@ -14,6 +14,7 @@ import FarmsList from '@/components/admin/project/FarmsList';
 import PartnersList from '@/components/admin/project/PartnersList';
 import ProjectParameters from '@/components/admin/project/ProjectParameters';
 import ContentManagement from '@/components/admin/project/ContentManagement';
+import WhitepaperManagement from '@/components/admin/project/WhitepaperManagement';
 import { farmsData } from '@/data/farmsData';
 
 const ProjectAdmin = () => {
@@ -97,6 +98,7 @@ const ProjectAdmin = () => {
             <TabsTrigger value="parameters">Parameters</TabsTrigger>
             <TabsTrigger value="partners">Partners</TabsTrigger>
             <TabsTrigger value="content">Content</TabsTrigger>
+            <TabsTrigger value="whitepaper">Whitepaper</TabsTrigger>
           </TabsList>
           
           <TabsContent value="overview" className="pt-6">
@@ -145,6 +147,10 @@ const ProjectAdmin = () => {
           
           <TabsContent value="content" className="pt-6">
             <ContentManagement />
+          </TabsContent>
+          
+          <TabsContent value="whitepaper" className="pt-6">
+            <WhitepaperManagement />
           </TabsContent>
         </Tabs>
       </div>

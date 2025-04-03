@@ -15,6 +15,18 @@ const ConnectWallet = ({ onConnect }: ConnectWalletProps) => {
   const [address, setAddress] = useState<string | null>(null);
   const { toast } = useToast();
 
+  // Check localStorage on component mount
+  useEffect(() => {
+    const savedConnection = localStorage.getItem('walletConnected') === 'true';
+    const savedAddress = localStorage.getItem('walletAddress');
+    
+    if (savedConnection && savedAddress) {
+      setIsConnected(true);
+      setAddress(savedAddress);
+      onConnect(true);
+    }
+  }, [onConnect]);
+
   // Simulate wallet connection
   const connectWallet = async () => {
     setIsLoading(true);
@@ -30,6 +42,15 @@ const ConnectWallet = ({ onConnect }: ConnectWalletProps) => {
       setAddress(mockAddress);
       setIsConnected(true);
       onConnect(true);
+      
+      // Store in localStorage for persistence
+      localStorage.setItem('walletConnected', 'true');
+      localStorage.setItem('walletAddress', mockAddress);
+      
+      // Dispatch custom event for other components
+      window.dispatchEvent(new CustomEvent('walletConnectionChanged', { 
+        detail: { connected: true } 
+      }));
       
       toast({
         title: "Wallet connected",
@@ -50,6 +71,15 @@ const ConnectWallet = ({ onConnect }: ConnectWalletProps) => {
     setAddress(null);
     setIsConnected(false);
     onConnect(false);
+    
+    // Clear localStorage
+    localStorage.removeItem('walletConnected');
+    localStorage.removeItem('walletAddress');
+    
+    // Dispatch custom event
+    window.dispatchEvent(new CustomEvent('walletConnectionChanged', { 
+      detail: { connected: false } 
+    }));
     
     toast({
       title: "Wallet disconnected",

@@ -47,6 +47,30 @@ const Dashboard = () => {
     };
   }, []);
 
+  // Check if wallet is connected through Navbar component
+  useEffect(() => {
+    const checkWalletConnection = () => {
+      // For demo purposes, check localStorage - in production, this would be a proper wallet check
+      const isWalletConnected = localStorage.getItem('walletConnected') === 'true';
+      setIsConnected(isWalletConnected);
+      console.log('Dashboard: Wallet connection status:', isWalletConnected);
+    };
+
+    // Check immediately and also set up event listener for wallet connection changes
+    checkWalletConnection();
+    
+    // Listen for a custom event that Navbar might dispatch when wallet connection changes
+    const handleWalletConnection = (event: CustomEvent) => {
+      setIsConnected(event.detail.connected);
+    };
+    
+    window.addEventListener('walletConnectionChanged' as any, handleWalletConnection as EventListener);
+    
+    return () => {
+      window.removeEventListener('walletConnectionChanged' as any, handleWalletConnection as EventListener);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-vanilla-50 to-white dark:from-earth-900 dark:to-earth-950 text-earth-900 dark:text-vanilla-100 relative">
       <Helmet>

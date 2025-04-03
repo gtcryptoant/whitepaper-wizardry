@@ -11,7 +11,7 @@ import InvestmentCalculator from '@/components/InvestmentCalculator';
 import TribalBackground from '@/components/TribalBackground';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Calculator, Leaf, BarChart } from 'lucide-react';
+import { Leaf, Calculator } from 'lucide-react';
 import { initRevealAnimations, initParallaxEffects } from '@/utils/revealAnimation';
 
 const Dashboard = () => {
@@ -98,13 +98,6 @@ const Dashboard = () => {
                 <Calculator className="h-4 w-4 mr-2" />
                 ROI Calculator
               </TabsTrigger>
-              <TabsTrigger 
-                value="market" 
-                className="data-[state=active]:bg-white dark:data-[state=active]:bg-earth-900 data-[state=active]:text-earth-900 dark:data-[state=active]:text-vanilla-100"
-              >
-                <BarChart className="h-4 w-4 mr-2" />
-                Market Data
-              </TabsTrigger>
             </TabsList>
             
             <TabsContent value="portfolio" className="space-y-8 animate-fade-in">
@@ -122,25 +115,6 @@ const Dashboard = () => {
             
             <TabsContent value="calculator" className="space-y-8 animate-fade-in">
               <InvestmentCalculator initialTokenPrice={30} />
-            </TabsContent>
-            
-            <TabsContent value="market" className="space-y-8 animate-fade-in">
-              <div className="bg-white/40 dark:bg-earth-900/40 backdrop-blur-sm border border-vanilla-200 dark:border-earth-800 rounded-xl p-8 text-center">
-                <h3 className="text-xl font-display mb-4">Market Data Coming Soon</h3>
-                <p className="text-earth-700 dark:text-vanilla-300 mb-6">
-                  Real-time market data for Vanilla Valley Tokens will be available after the public launch.
-                </p>
-                <div className="flex justify-center">
-                  <Button 
-                    onClick={() => setActiveTab("portfolio")} 
-                    variant="outline" 
-                    className="border-vanilla-300 dark:border-earth-700"
-                  >
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Return to Portfolio
-                  </Button>
-                </div>
-              </div>
             </TabsContent>
           </Tabs>
         </div>

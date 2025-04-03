@@ -3,13 +3,11 @@ import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { cn } from '@/lib/utils';
 import Navbar from '@/components/Navbar';
-import ConnectWallet from '@/components/ConnectWallet';
 import TokenDetails from '@/components/TokenDetails';
 import InvestmentChart from '@/components/InvestmentChart';
 import TokenHoldings from '@/components/TokenHoldings';
 import InvestmentCalculator from '@/components/InvestmentCalculator';
 import TribalBackground from '@/components/TribalBackground';
-import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Leaf, Calculator } from 'lucide-react';
 import { initRevealAnimations, initParallaxEffects } from '@/utils/revealAnimation';
@@ -49,11 +47,6 @@ const Dashboard = () => {
     };
   }, []);
 
-  const handleConnect = (connected: boolean) => {
-    setIsConnected(connected);
-    // In a real app, we would fetch the user's tokens here
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-vanilla-50 to-white dark:from-earth-900 dark:to-earth-950 text-earth-900 dark:text-vanilla-100 relative">
       <Helmet>
@@ -73,8 +66,6 @@ const Dashboard = () => {
                 Track your Vanilla Valley Tokens and investment growth
               </p>
             </div>
-            
-            <ConnectWallet onConnect={handleConnect} />
           </div>
           
           <Tabs 
